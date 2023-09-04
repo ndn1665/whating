@@ -1,0 +1,120 @@
+p {
+    text-align: center;
+}
+fieldset {
+    border: none;
+}
+ul {
+    display: grid;
+    grid-template-columns: repeat(8, 4fr);
+    grid-template-rows: 30px;
+}
+#form1 {
+    display: grid;
+    grid-column: 0/8;
+    grid-row: 3;
+    text-align:center;
+    width: 220px;
+    height: 100px;
+}
+#form2 {
+    display: grid;
+    grid-column: 1/5;
+    grid-row: 4;
+    text-align: left;
+}
+#input {
+    height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid black;
+    background-color: aliceblue;
+}
+button {
+    background-color: aliceblue;
+    border-radius: 25%;
+    border-color: aliceblue;
+}
+#button {
+    text-align: center;
+}
+#Choose {
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 70px);
+}
+#form0 {
+    grid-column: 1;
+    grid-row: 1;
+    display: inline-block;
+    background-color: pink;
+    border-radius: 25%;
+    text-align: center;
+    cursor : pointer;
+}
+#form2 {
+    grid-column: 2;
+    grid-row: 1;
+    display: inline-block;
+    background-color: pink;
+    border-radius: 25%;
+    text-align: center;
+    cursor : pointer;
+}
+#form3 {
+    grid-column: 3;
+    grid-row: 1;
+    display: inline-block;
+    background-color: pink;
+    border-radius: 25%;
+    text-align: center;
+    cursor : pointer;
+}
+#form4 {
+    grid-column: 1;
+    grid-row: 2;
+    display: inline-block;
+    background-color: pink;
+    border-radius: 25%;
+    text-align: center;
+    cursor : pointer;
+}
+#form5 {
+    grid-column: 2;
+    grid-row: 2;
+    display: inline-block;
+    background-color: pink;
+    border-radius: 25%;
+    text-align: center;
+    cursor : pointer;
+}
+#form6 {
+    grid-column: 3;
+    grid-row: 2;
+    display: inline-block;
+    background-color: pink;
+    border-radius: 25%;
+    text-align: center;
+    cursor : pointer;
+}
+#form7 {
+    grid-column: 1;
+    grid-row: 3;
+    display: inline-block;
+    background-color: pink;
+    border-radius: 25%;
+    text-align: center;
+    cursor : pointer;
+}
+#form8 {
+    grid-column: 2;
+    grid-row: 3;
+    display: inline-block;
+    background-color: pink;
+    border-radius: 25%;
+    text-align: center;
+    cursor : pointer;
+}

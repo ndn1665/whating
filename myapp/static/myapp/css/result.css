@@ -1,0 +1,135 @@
+
+#Result {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 90px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+.box1 {
+    grid-column: 1/5;
+    grid-row: 1;
+    display: inline-block;
+    text-align: center;
+    font-size: large;
+}
+.box2 {
+    grid-column: 2/5;
+    grid-row: 2;
+    display: inline-block;
+    text-align: center;
+    line-height: 57px;
+}
+.box3 {
+    grid-column: 5/8;
+    grid-row: 2;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 29px;
+}
+.box4 {
+    grid-column: 8/11;
+    grid-row: 2;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 29px;
+}
+.box5 {
+    grid-column: 2/5;
+    grid-row: 3;
+    display: inline-block;
+    text-align: center;
+    line-height: 57px;
+}
+.box6 {
+    grid-column: 5/8;
+    grid-row: 3;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 29px;
+}
+.box7 {
+    grid-column: 8/11;
+    grid-row: 3;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 29px;
+}
+.box8 {
+    grid-column: 2/5;
+    grid-row: 4;
+    display: inline-block;
+    text-align: center;
+    line-height: 57px;
+}
+.box9 {
+    grid-column: 5/8;
+    grid-row: 4;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 29px;
+}
+.box10 {
+    grid-column: 8/11;
+    grid-row: 4;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 29px;
+}
+.box11 {
+    grid-column: 2/5;
+    grid-row: 5;
+    display: inline-block;
+    text-align: center;
+    line-height: 57px;
+}
+.box12 {
+    grid-column: 5/8;
+    grid-row: 5;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 29px;
+}
+.box13 {
+    grid-column: 8/11;
+    grid-row: 5;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    line-height: 29px;
+}
+#navButton3 {
+    background-color: rgb(248, 178, 188);
+}
+            

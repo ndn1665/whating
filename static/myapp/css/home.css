@@ -1,0 +1,80 @@
+
+                #start {
+                    display: grid;
+                    grid-template-columns: repeat(8, 1fr);
+                    grid-template-rows: repeat(3, 1fr);
+                    grid-column-gap: 30px;
+                    grid-row-gap: 70px;
+                }
+                .box1 {
+                    grid-column: 1/5;
+                    grid-row: 1/2;
+                    display: inline-block;
+                    background-color: white;
+                    border-color: rgb(248, 178, 188);
+                    border-style:groove;
+                    box-shadow: 0 5px 5px rgba(243, 221, 110, 0.2);
+                    border-radius: 30%;
+                    text-align: center;
+                    cursor : pointer;
+                    line-height: 40px;
+                }
+                .box2 {
+                    grid-column: 5/10;
+                    grid-row: 1/2;
+                    display: inline-block;
+                    border-radius: 25%;
+                    text-align: left;
+                    font-size: small;
+                }
+                .box3 {
+                    grid-column: 1/5;
+                    grid-row: 2/3;
+                    display: inline-block;
+                    background-color: white;
+                    border-color: rgb(248, 178, 188);
+                    border-style:groove;
+                    box-shadow: 0 5px 5px rgba(243, 221, 110, 0.2);
+                    border-radius: 30%;
+                    text-align: center;
+                    cursor : pointer;
+                    line-height: 40px;
+                    opacity: 0.5;
+                    pointer-events: none;
+                }
+                .box4 {
+                    grid-column: 5/10;
+                    grid-row: 2/3;
+                    display: inline-block;
+                    border-radius: 25%;
+                    text-align: left;
+                    font-size: small;
+                    opacity: 0.5;
+                }
+                .box5 {
+                    grid-column: 1/5;
+                    grid-row: 3/4;
+                    display: inline-block;
+                    background-color: white;
+                    border-color: rgb(248, 178, 188);
+                    border-style:groove;
+                    box-shadow: 0 5px 5px rgba(243, 221, 110, 0.2);
+                    border-radius: 30%;
+                    text-align: center;
+                    cursor : pointer;
+                    line-height: 40px;
+                    opacity: 0.5;
+                    pointer-events: none;
+                }
+                .box6 {
+                    grid-column: 5/10;
+                    grid-row: 3/4;
+                    display: inline-block;
+                    border-radius: 25%;
+                    text-align: left;
+                    font-size: small;
+                    opacity: 0.5;
+                }
+                #navButton1 {
+                    background-color: rgb(248, 178, 188);
+                }

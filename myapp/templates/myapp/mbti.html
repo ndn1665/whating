@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/mbti.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="AloneChoose2">
+
+    <script>
+      function checkAll() {
+        var selectedMBTI = document.querySelectorAll("input[name^='mbti']:checked");
+        var submit_mbti = [];
+
+  for (var i = 0; i < selectedMBTI.length; i++) {
+    submit_mbti.push(selectedMBTI[i].value);
+  }   
+        if (submit_mbti.length !== 4) {
+          alert("모든 필수 정보를 입력해주세요.");
+          return false; // 폼 제출 방지
+        }
+      
+        return true; // 폼 제출 허용
+      }
+    </script>
+
+    <body>
+      <br><br>
+      <p>원하는 mbti 선택해주세요</p>
+
+      <form id="Choose" action='/mbti/' method="post" onsubmit="return checkAll()">
+        <ul>
+          <input type="radio" id="1" name="mbti1" value="e"> <label for="1"> e </label>
+          <input type="radio" id="2" name="mbti2" value="s"> <label for="2"> s </label>
+          <input type="radio" id="3" name="mbti3" value="f"> <label for="3"> f </label>
+          <input type="radio" id="4" name="mbti4" value="j"> <label for="4"> j </label>
+          <input type="radio" id="5" name="mbti1" value="i"> <label for="5"> i </label>
+          <input type="radio" id="6" name="mbti2" value="n"> <label for="6"> n </label>
+          <input type="radio" id="7" name="mbti3" value="t"> <label for="7"> t </label>
+          <input type="radio" id="8" name="mbti4" value="p"> <label for="8"> p </label>
+        </ul>
+        <br>
+      <div id="button">
+        <button type="submit">
+          제출
+        </div>
+      </form>
+        <script>
+          const form = document.getElementById("Choose");
+
+        </script>
+      </body>
+    </main>
+
+  </html>

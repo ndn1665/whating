@@ -1,0 +1,45 @@
+<meta charset="utf-8">
+
+
+<!DOCTYPE html>
+<html lang="ko">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <title>내 정보</title>
+  <link rel="stylesheet" href="{% static 'myapp/css/myinfo.css' %}">
+</head>
+<body>
+  {% include 'myapp/index.html' %}
+  <main class="YouInfo">
+    <br><br>
+    <h2>내 정보</h2>
+    <br><br>
+    <div id="Info">
+      <p>나이: {{ user_profile.age }}</p>
+      <p>미팅 인원수: {{ user_profile.peoplenum }}</p>
+      <p>직업: {{ user_profile.job }}</p>
+      <p>학교와 학과: {{ user_profile.school }} {{ user_profile.major }}</p>
+      <p>mbti: {{ user_profile.mbti }}</p>
+      {% if user_profile.gender == 'M' %}<p>군/미필: {{ user_profile.army }}</p>{% endif %}
+      <p>키: {{ user_profile.height }}</p>
+      <p>체형: {{ user_profile.body }}</p>
+      <p>유/무쌍: {{ user_profile.eyes }}</p>
+      <p>얼굴상: {{ user_profile.face }}</p>
+      <p>관심사: {{ user_profile.hobby }}</p>
+    </div>
+    <div id="Info2">
+      <p>자유로운 자기소개: {{ user_profile.introduction }}</p>
+    </div>
+    <br>
+    <div class="box1" onclick="gomyInfo();">
+      <strong>정보 변경</strong>
+    </div>
+    <script>
+      function gomyInfo() {
+        location.href = '/my/';
+      }
+    </script>
+  </main>
+</body>
+</html>

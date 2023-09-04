@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/hobby.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="AloneChoose2">
+
+    <script>
+      function checkAll() {
+        var checkboxes = document.getElementsByName("hobby");
+        var submit_hobby = [];
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            submit_hobby.push(checkboxes[i].value);
+          }
+        }
+
+        document
+          .getElementById("submit_hobby")
+          .value = submit_hobby.join(",");
+
+        if (submit_hobby.length === 0) {
+          alert("관심사를 선택해주세요.");
+          return false; // 폼 제출 방지
+        }
+      
+        return true; // 폼 제출 허용
+      }
+    </script>
+
+    <body>
+      <br><br>
+      <p>관심사를 선택해주세요</p>
+
+      <form id="Choose" action='/hobby/' method="post" onsubmit="return checkAll()" >
+        <ul>
+        <input type=checkbox id="1" name="hobby" value="exercise" > <label for = "1"> 운동 </label>
+        <input type=checkbox id="2" name="hobby" value="walk" > <label for = "2"> 산책 </label>
+        <input type=checkbox id="3" name="hobby" value="show" > <label for = "3"> 공연관람 </label>
+        <input type=checkbox id="4" name="hobby" value="shopping" > <label for = "4"> 쇼핑 </label>
+        <input type=checkbox id="5" name="hobby" value="money" > <label for = "5"> 재태크 </label>
+        <input type=checkbox id="6" name="hobby" value="fashion" > <label for = "6"> 패션 </label>
+        <input type=checkbox id="7" name="hobby" value="pet" > <label for = "7"> 반려동물 </label>
+        <input type=checkbox id="8" name="hobby" value="music" > <label for = "8"> 음악감상 </label>
+        <input type=checkbox id="9" name="hobby" value="book" > <label for = "9"> 독서 </label>
+        <input type=checkbox id="10" name="hobby" value="trip" > <label for = "10"> 여행 </label>
+        <input type=checkbox id="11" name="hobby" value="cafe" > <label for = "11"> 카페 </label>
+        <input type=checkbox id="12" name="hobby" value="game" > <label for = "12"> 게임 </label>
+        <input type=checkbox id="13" name="hobby" value="movie" > <label for = "13"> 영화/드라마 </label>
+        <input type=checkbox id="14" name="hobby" value="museum" > <label for = "14"> 전시관람 </label>
+        <input type=checkbox id="15" name="hobby" value="musical" > <label for = "15"> 연극/뮤지컬 </label>
+        <input type=checkbox id="16" name="hobby" value="drink" > <label for = "16"> 술 </label>
+        <input type=checkbox id="17" name="hobby" value="performane" > <label for = "17"> 악기연주 </label>
+        <input type=checkbox id="18" name="hobby" value="eat" > <label for = "18"> 맛집 </label>
+        <input type=checkbox id="19" name="hobby" value="cook" > <label for = "19"> 요리 </label>
+        </ul>
+      <br>
+      <input type="hidden" name="submit_hobby" id="submit_hobby">
+      <div id="button">
+        <button type="submit">
+          제출
+        </div>
+      </form>
+      </body>
+    </main>
+
+  </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/choose.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="Choose">
+
+    <body>
+      <br><br><br>
+      <h2>원하는 버튼을 <span style="color: rgb(241, 48, 128);">클릭</span>해주세요!</h2>
+      <br><br><br>
+      <div id="meet">
+        <div class="box1" onclick="AloneFun();">
+          <strong>소개팅하기!</strong>
+        </div>
+        <div class="box2" onclick="MeetingFun();">
+          <strong>미팅하기!</strong>
+        </div>
+
+        <script>
+          function AloneFun() {
+            location.href = "/alonechoose/";
+          }
+
+          function MeetingFun() {
+            location.href = "/meeting/";
+          }
+        </script>
+      </body>
+    </main>
+
+  </html>

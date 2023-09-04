@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/eyes.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="AloneChoose2">
+
+    <script>
+      function checkAll() {
+        var checkbox1 = document.getElementsByName("eyes");
+        var checkbox2 = document.getElementsByName("face");
+        var selected1 = false; // 라디오 버튼이 선택되었는지 여부
+        var selected2 = false;
+
+        for (var i = 0; i < checkbox1.length; i++) {
+          if (checkbox1[i].checked) {
+            selected1 = true;
+            break;
+          }
+        }
+
+        for (var i = 0; i < checkbox2.length; i++) {
+          if (checkbox2[i].checked) {
+            selected2 = true;
+            break;
+          }
+        }
+
+        if (!selected1) {
+          alert("유/무쌍을 선택해주세요."); // 오류 메시지 출력
+          return false; // 폼 제출 방지
+        }
+        if (!selected2) {
+          alert("얼굴상을 선택해주세요."); // 오류 메시지 출력
+          return false; // 폼 제출 방지
+        }
+
+        document
+          .getElementById("eyes")
+          .value = selected1 ? "selected1" : "";
+
+        return true; // 폼 제출 허용
+      
+      document
+          .getElementById("face")
+          .value = selected2 ? "selected2" : "";
+
+        return true; // 폼 제출 허용
+      }
+    </script>
+
+
+    <body>
+      <br><br>
+      <p>유/무쌍과 얼굴상을 선택해주세요</p>
+
+      <form id="Choose" action='/eyes/' method="post" onsubmit="return checkAll()">
+        <ul> 
+        <input type="radio" id="1" name="eyes" value="유쌍" > <label for = "1"> 유쌍 </label>
+        <input type="radio" id="2" name="eyes" value="무쌍"> <label for = "2">  무쌍 </label>
+        <input type="radio" id="3" name="face" value="두부" > <label for = "3"> 두부상 </label>
+        <input type="radio" id="4" name="face" value="뚜렷"> <label for = "4"> 뚜렷상 </label>
+        </ul>
+        <br>
+        <input type="hidden" name="eyes" id="eyes">
+      <input type="hidden" name="face" id="face">
+        <div id="button">
+          <button type="submit">
+            제출
+          </div>
+        </form>
+      </body>
+    </main>
+
+  </html>

@@ -1,0 +1,85 @@
+#matching {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+}
+.box1 {
+    grid-column: 2/8;
+    grid-row: 2;
+    display: inline-block;
+    text-align: center;
+    font-size: larger;
+}
+.box2 {
+    grid-column: 2/8;
+    grid-row: 3;
+    display: inline-block;
+    text-align: center;
+    font-size: larger;
+}
+#box5 {
+    grid-column: 1/5;
+    grid-row: 4;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    opacity: 0;
+    line-height: 63.2px;
+}
+#box6 {
+    grid-column: 5/9;
+    grid-row: 4;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    opacity: 0;
+    line-height: 63.2px;
+}
+#box7 {
+    grid-column: 1/5;
+    grid-row: 4;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    opacity: 0;
+    line-height: 63.2px;
+}
+#box8 {
+    grid-column: 5/9;
+    grid-row: 4;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+    opacity: 0;
+    line-height: 63.2px;
+}
+#navButton2 {
+    background-color: rgb(248, 178, 188);
+}
+
+button {
+    display: inline-block;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-size: medium;
+    line-height: 15px;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+}

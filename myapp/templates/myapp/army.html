@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/army.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="AloneChoose2">
+
+    <script>
+      function checkAll() {
+        var checkboxes = document.getElementsByName("army");
+        var selected = false; // 라디오 버튼이 선택되었는지 여부
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            selected = true;
+            break;
+          }
+        }
+
+        if (!selected) {
+          alert("군/미필을 선택해주세요."); // 오류 메시지 출력
+          return false; // 폼 제출 방지
+        }
+
+        document
+          .getElementById("submit_army")
+          .value = selected ? "selected" : "";
+
+        return true; // 폼 제출 허용
+      }
+    </script>
+
+    <body>
+      <br><br>
+      <p>군/미필을 선택해주세요</p>
+
+      <form id="Choose" action='/army/' method="post" onsubmit="return checkAll()" >
+        <ul>
+          <input type=radio id="1" name="army" value="go" > <label for = "1"> 군필 </label>
+          <input type=radio id="2" name="army" value="nongo" > <label for = "2"> 미필 </label>
+        </ul>
+        <br>
+        <div id="button">
+          <button type="submit">
+            제출
+          </div>
+        </form>
+      </body>
+    </main>
+
+  </html>

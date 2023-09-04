@@ -1,0 +1,110 @@
+p {
+    text-align: center;
+}
+fieldset {
+    border: none;
+}
+ul {
+    display: grid;
+    grid-template-columns: repeat(8, 4fr);
+    grid-template-rows: 30px;
+}
+button {
+    background-color: aliceblue;
+    border-radius: 25%;
+    border-color: aliceblue;
+}
+#button {
+    text-align: center;
+}
+#Choose {
+    display: grid;
+    place-items: left;
+    justify-content: center;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(4, 50px);
+}
+button {
+    background-color: white;
+    border-radius: 25%;
+    border-color: white;
+    border: none;
+    display: inline-block;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-size: large;
+    line-height: 15px;
+}
+form {
+    text-align: center;
+}
+.slider {
+    margin:0%;
+    height: 100%;
+    /* 후에 padding: 1.5rem 2rem 으로 수정합니다. 참고바랍니다. */
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    }
+    
+    input {
+    width: calc(100% - 1rem);
+    top: 1rem;
+    position: absolute;
+    border: none;
+    pointer-events: none;
+    z-index: 10;
+    appearance: none;
+    opacity: 0.5;
+    }
+    
+    input::-webkit-slider-thumb {
+    pointer-events: all;
+    /* appearance, background-color는 지워도 됨 */
+    appearance:none;
+    background-color: #6200ee;
+    width: 2.5rem;
+    height: 1.5rem;
+    }
+    input:first-child {
+    top: 1rem;
+    }
+    
+    .track {
+    position: relative;
+    width: 100%;
+    height: 0.5rem;
+    background-color: #c6aee7;
+    border-radius: 0.5rem;
+    }
+    
+    .range {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #6200ee;
+    border-radius: 0.5rem;
+    }
+    
+    .thumb {
+    position: absolute;
+    top: 0;
+    transform: translateY(-0.25rem);
+    width: 1rem;
+    height: 1rem;
+    background-color: #6200ee;
+    border-radius: 50%;
+    }
+    
+    .left {
+    left: 0;
+    }
+    
+    .right {
+    right: 0;
+    }

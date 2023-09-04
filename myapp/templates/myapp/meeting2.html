@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/meeting2.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="Hongik">
+
+    <body>
+      <br><br>
+      <h2>
+        <span style="color: rgb(241, 48, 128)">원하는 조건</span>을 모두<br> 선택해주세요!</h2>
+      <script>
+        function checkAll() {
+          var checkjobs = document.getElementsByName("job");
+          var submit_job = [];
+
+          var checkages = document.getElementsByName("age");
+          var submit_age = [];
+
+          for (var i = 0; i < checkjobs.length; i++) {
+            if (checkjobs[i].checked) {
+              submit_job.push(checkjobs[i].value);
+            }
+          }
+
+          for (var i = 0; i < checkages.length; i++) {
+            if (checkages[i].checked) {
+              submit_age.push(checkages[i].value);
+            }
+          }
+
+          document
+            .getElementById("submit_job")
+            .value = submit_job.join(",");
+          document
+            .getElementById("submit_age")
+            .value = submit_age.join(",");
+
+            if (submit_job.length === 0 ||  submit_age.length === 0) {
+              alert("모든 필수 정보를 입력해주세요.");
+              return false; // 폼 제출 방지
+            }
+          
+            return true; // 폼 제출 허용
+        }
+      </script>
+      <form id="MyForm" action='/meeting2/' method="post" onsubmit="return checkAll()">
+        <fieldset>
+          <ul>
+            <p>
+              <strong>상대방의 직업</strong>
+            </p>
+            <input type="checkbox" id="ch1" name="job" value="univstu">
+            <label for="ch1">
+              대학생
+            </label>
+            <input type="checkbox" id="ch2" name="job" value="gradustu">
+            <label for="ch2">
+              대학원생
+            </label>
+            <br>
+            <input type="checkbox" id="ch3" name="job" value="human">
+            <label for="ch3">
+              취준생
+            </label>
+            <input type="checkbox" id="ch4" name="job" value="worker">
+            <label for="ch4">
+              직장인
+            </label>
+            <span style="color:rgb(241, 48, 128)">
+              <p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+            </span>
+            <!--
+            <p>
+              <strong>미팅을 원하는 지역</strong>
+            </p>
+            <input type="checkbox" id="ch5" name="location" value="west">
+            <label for="ch5">
+              서울 서부
+            </label>
+            <input type="checkbox" id="ch6" name="location" value="east">
+            <label for="ch6">
+              서울 동부
+            </label>
+            <br>
+            <input type="checkbox" id="ch7" name="location" value="south">
+            <label for="ch7">
+              서울 남부
+            </label>
+            <input type="checkbox" id="ch8" name="location" value="north">
+            <label for="ch8">
+              서울 북부
+            </label>
+          </p>
+        -->
+            <p><strong>상대방의 평균 나이</strong></p>
+            
+            <input type="checkbox" id="ch5" name="age" value="head">
+            <label id="two" for="ch5">
+              20대 초반
+            </label>
+            <input type="checkbox" id="ch6" name="age" value="middle">
+            <label id="two" for="ch6">
+              20대 중반
+            </label>
+            <input type="checkbox" id="ch7" name="age" value="tail">
+            <label id="two" for="ch7">
+              20대 후반
+            </label>
+        </ul>
+      </fieldset>
+      <p id="one">제출 버튼을 누르면 매칭 신청이 됩니다!</p>
+      <br>
+      <input type="hidden" name="submit_job" id="submit_job">
+      <input type="hidden" name="submit_age" id="submit_age">
+      <!--<input type="hidden" name="submit_location" id="submit_location">-->
+      <div id="button">
+        <button type="submit">
+          제출 <!--08.29 제출 누르면 good.html 뜨도록 하기-->
+        </label>
+      </div>
+    </form>
+    </body>
+  </main>
+
+</html>

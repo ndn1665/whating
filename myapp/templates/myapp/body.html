@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/body.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="AloneChoose2">
+
+    <script>
+      function checkAll() {
+        var checkboxes = document.getElementsByName("body");
+        var selected = false; // 라디오 버튼이 선택되었는지 여부
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            selected = true;
+            break;
+          }
+        }
+
+        if (!selected) {
+          alert("체형을 선택해주세요."); // 오류 메시지 출력
+          return false; // 폼 제출 방지
+        }
+
+        document
+          .getElementById("submit_body")
+          .value = selected ? "selected" : "";
+
+        return true; // 폼 제출 허용
+      }
+    </script>
+
+    <body>
+      <br><br>
+      <p>원하는 체형을 선택해주세요</p>
+
+      <form id="Choose" action='/body/' method="post" onsubmit="return checkAll()" >
+        <ul>
+          <input type=radio id="1" name="body" value="thin" > <label for = "1"> 마름 </label>
+          <input type=radio id="2" name="body" value="normal" > <label for = "2"> 보통 </label>
+          <input type=radio id="3" name="body" value="fat" > <label for = "3"> 통통 </label>
+          <input type=radio id="4" name="body" value="muscle" > <label for = "4"> 탄탄 </label>
+        </ul>
+        <br>
+        <div id="button">
+          <button type="submit">
+            제출
+          </div>
+        </form>
+      </body>
+    </main>
+
+  </html>

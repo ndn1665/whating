@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/meeting.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="Hongik">
+
+    <body>
+      <br><br>
+      {% if error_message %}
+        <p>
+          <strong>{{ error_message }}</strong>
+        </p>
+      {% endif %}
+      <h2>미팅에 나가기 위해<br>
+        <span style="color:rgb(241, 48, 128)">정보</span>를 입력해주세요!<br><br></h2>
+      <!--평균 나이, 직업, 원하는 미팅 지역 등 선택-->
+      <script>
+        function checkAll() {
+          var checkboxes = document.getElementsByName("peoplenum");
+          var submit_peoplenum = [];
+
+          for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+              submit_peoplenum.push(checkboxes[i].value);
+            }
+          }
+
+          document
+            .getElementById("submit_peoplenum")
+            .value = submit_peoplenum.join(",");
+          
+            var ageInput = document.getElementsByName("submit_age")[0];
+          
+            if (submit_peoplenum.length === 0 || ageInput.value > 30) {
+              alert("모든 필수 정보를 입력해주세요.");
+              return false; // 폼 제출 방지
+            }
+
+          return true; // 폼 제출 허용
+        }
+      </script>
+      <form id="MyForm" action='/meeting/' method="post" onsubmit="return checkAll()">
+        <fieldset>
+          <ul>
+            <br>
+            <strong>미팅 인원수
+            </strong>
+            <br>
+            <span style="color:rgb(241, 48, 128)">
+              <p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+            </span>
+            <input type="radio" name="peoplenum" id="change1" value="2">
+            <label id="one" for="change1">
+              2명
+            </label>
+            <input type="radio" name="peoplenum" id="change2" value="3">
+            <label id="one" for="change2">
+              3명
+            </label>
+            <input type="radio" name="peoplenum" id="change3" value="4">
+            <label id="one" for="change3">
+              4명
+            </label>
+
+            <span style="color:rgb(241, 48, 128)">
+              <p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+            </span>
+            <p><strong>미팅 참여자의 평균 나이</strong></p>
+            
+              <input type="range" name="submit_age" min="19" max="31" value = "31" oninput="document.getElementById('output1').innerHTML=this.value;" />
+              <br><span id="output1"></span>
+          </ul>
+        </fieldset>
+        <input type="hidden" name="submit_peoplenum" id="submit_peoplenum">
+        <br>
+        <div id="button">
+          <button type="submit">
+            <strong>▶</strong>
+          </button>
+        </div>
+      </body>
+    </main>
+
+  </html>

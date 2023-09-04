@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/result.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="ResultContent">
+
+    <body>
+      <div id="Result">
+        <div class="box1">
+          <br><br>
+          <p style="color:rgb(241, 48, 128); text-emphasis-style: dot;">
+            <strong>매칭된 상대</strong>
+          </p>
+        </div>
+        <div class="box2">
+          <p>
+            <strong>소개팅</strong>
+          </p>
+          <!--소개팅 or 미팅(2:2, 3:3 등)으로 뜨게-->
+        </div>
+        <div class="box3" onclick="goYouInfo();">
+          <p>
+            <strong>상대정보<br>
+              <span style="color:violet;">확인</span></strong>
+          </p>
+        </div>
+        <div class="box4" onclick="goKakao();">
+          <p>
+            <strong>카톡아이디<br>
+              <span style="color:violet;">확인</span></strong>
+          </p>
+        </div>
+        <div class="box5">
+          <p>
+            <strong>2:2 미팅</strong>
+          </p>
+          <!--소개팅 or 미팅(2:2, 3:3 등)으로 뜨게-->
+        </div>
+        <div class="box6" onclick="goYouInfo();">
+          <p>
+            <strong>상대정보<br>
+              <span style="color:violet;">확인</span></strong>
+          </p>
+        </div>
+        <div class="box7" onclick="goKakao();">
+          <p>
+            <strong>카톡아이디<br>
+              <span style="color:violet;">확인</span></strong>
+          </p>
+        </div>
+        <div class="box8">
+          <p>
+            <strong>3:3 미팅</strong>
+          </p>
+          <!--소개팅 or 미팅(2:2, 3:3 등)으로 뜨게-->
+        </div>
+        <div class="box9" onclick="goYouInfo();">
+          <p>
+            <strong>상대정보<br>
+              <span style="color:violet;">확인</span></strong>
+          </p>
+        </div>
+        <div class="box10" onclick="goKakao();">
+          <p>
+            <strong>카톡아이디<br>
+              <span style="color:violet;">확인</span></strong>
+          </p>
+        </div>
+        <div class="box11">
+          <p>
+            <strong>4:4 미팅</strong>
+          </p>
+          <!--소개팅 or 미팅(2:2, 3:3 등)으로 뜨게-->
+        </div>
+        <div class="box12" onclick="goYouInfo();">
+          <p>
+            <strong>상대정보<br>
+              <span style="color:violet;">확인</span></strong>
+          </p>
+        </div>
+        <div class="box13" onclick="goKakao();">
+          <p>
+            <strong>카톡아이디<br>
+              <span style="color:violet;">확인</span></strong>
+          </p>
+        </div>
+      </div>
+      <script>
+        function goYouInfo() {
+            location.href = '/youinfo/';
+        }
+    
+        function goKakao() {
+            if ({{matched}}) {
+                location.href = '/kakao/';
+            } else {
+                location.href = '/fail/';
+            }
+        }
+    </script>
+    </body>
+  </main>
+
+</html>
+
+    <!--08.22 result에서 신청하지 않은 매칭 정보 누르면 error.html 나오도록 구현-->

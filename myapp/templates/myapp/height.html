@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/height.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="AloneChoose2">
+
+    <script>
+      function checkAll() {
+        var checkboxes = document.getElementsByName("major");
+        var selected = false; // 라디오 버튼이 선택되었는지 여부
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            selected = true;
+            break;
+          }
+        }
+
+        if (!selected) {
+          alert("학과를 선택해주세요."); // 오류 메시지 출력
+          return false; // 폼 제출 방지
+        }
+
+        document
+          .getElementById("submit_major")
+          .value = selected ? "selected" : "";
+
+        return true; // 폼 제출 허용
+      }
+    </script>
+
+    <body>
+      <br><br>
+      <p>원하는 키 범위를 선택해주세요</p>
+      <br><br>
+
+      <form id="box" action='/height/' method="post" onsubmit="return checkAll()">
+          <div class="slider">
+            <input type="range" name="minheight" id="input-left" min="1" max="100" value="1" oninput=document.getElementById('output1').innerHTML=this.value;>
+            <input type="range" name="maxheight" id="input-right" min="1" max="100" value="100" oninput=document.getElementById('output2').innerHTML=this.value;>
+            <div class="track">
+              <div class="range"></div>
+              <div class="thumb left"></div>
+              <div class="thumb right"></div>
+            </div>
+          </div>
+          <span id="output1"></span> <span>~</span> <span id="output2"></span>
+      </form>
+      <br>
+      <div id="button">
+        <button type="submit">
+          제출
+        </div>
+
+        <script>
+          const inputLeft = document.getElementById("input-left");
+          const inputRight = document.getElementById("input-right");
+
+          const thumbLeft = document.querySelector(".thumb.left");
+          const thumbRight = document.querySelector(".thumb.right");
+
+          const range = document.querySelector(".range");
+
+          const setLeftValue = e => {
+            const _this = e.target;
+            const {value, min, max} = _this;
+
+            if (+ inputRight.value - + value < 10) {
+              _this.value = + inputRight.value - 20;
+            }
+            const percent = ((+ _this.value - + min) / (+ max - + min)) * 100;
+
+            thumbLeft.style.left = `${percent}%`;
+            range.style.left = `${percent}%`;
+          };
+
+          const setRightValue = e => {
+            const _this = e.target;
+            const {value, min, max} = _this;
+
+            if (+ value - + inputLeft.value < 10) {
+              _this.value = + inputLeft.value + 20;
+            }
+
+            const percent = ((+ _this.value - + min) / (+ max - + min)) * 100;
+
+            thumbRight.style.right = `${ 100 - percent}%`;
+            range.style.right = `${ 100 - percent}%`;
+          };
+
+          if (inputLeft && inputRight) {
+            inputLeft.addEventListener("input", setLeftValue);
+            inputRight.addEventListener("input", setRightValue);
+          };
+        </script>
+      </body>
+    </main>
+
+  </html>

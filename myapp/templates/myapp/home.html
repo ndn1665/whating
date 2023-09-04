@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  {% include 'myapp/index.html' %}
+  <link rel="stylesheet" href="{% static 'myapp/css/home.css' %}">
+
+  <main class="HomeContent">
+
+    <body>
+      <br><br>
+      <h2>
+        <span style="color:rgb(241, 48, 128); text-emphasis-style: dot;">당신의 인연</span>은 어디에?</h2>
+      <br><br>
+      <div id="start">
+        <div class="box1" onclick="startFun1();">
+          <strong>홍대축제에서</strong>
+        </div>
+        <div class="box2">
+          홍대축제 3일 한정<br>당일 매칭이 가능해요!
+        </div>
+        <div class="box3" onclick="startFun2();">
+          <strong>우리학교와</strong>
+        </div>
+        <div class="box4">
+          정식 출시 후에 <br> 만나요!
+          <!--우리학교 사람과<br>만날 수 있어요!-->
+        </div>
+        <div class="box5" onclick="startFun3();">
+          <strong>다른학교와</strong>
+        </div>
+        <div class="box6">
+          정식 출시 후에 <br> 만나요!
+          <!--다른학교 사람과<br>만날 수 있어요!-->
+        </div>
+        <script>
+          function startFun1() {
+            if ({{logged}} == '1') {
+              location.href = '/my/1';
+            }
+            else{
+              location.href = '/kakaologin/';
+            }
+          }
+
+          function startFun2() {
+            if (/* 유저 정보 x 이면 */
+            false) {
+              /* 카톡 api로 로그인하도록 창 연결 */
+            } else if (/* 자기소개 없으면 */
+            true) {
+              location.href = '/my/1';
+            } else {
+              location.href = '/choose/';
+            }
+
+          }
+
+          function startFun3() {
+            if (/* 유저 정보 x 이면 */
+            false) {
+              /* 카톡 api로 로그인하도록 창 연결 */
+            } else if (/* 자기소개 없으면 */
+            false) {
+              location.href = '/my/1';
+            } else {
+              location.href = '/choose/';
+            }
+
+          }
+        </script>
+      </body>
+    </main>
+
+  </html>

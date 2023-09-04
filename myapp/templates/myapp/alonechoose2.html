@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/alonechoose2.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="AloneChoose2">
+
+    <body>
+      <script src="{% static 'myapp/js/Function.js' %}"></script>
+      <br><br>
+      <p>상대방의 원하는 조건을 2가지 선택해주세요!</p>
+
+      <div id="Choose">
+        <div id="form0" onclick="location.href='/major/'">
+          학과
+        </div>
+        <div id="form2" onclick="location.href='/mbti/'">
+          mbti
+        </div>
+        <div id="form3" onclick="location.href='/army/'">
+          <!-- 여자/남자 정보 받아오기(자기소개페이지에서)-->
+          군/미필
+        </div>
+        <div id="form4" onclick="location.href='/height/'">
+          키
+        </div>
+        <div id="form5" onclick="location.href='/body/'">
+          체형
+        </div>
+        <div id="form6" onclick="location.href='/eyes/'">
+          유/무쌍
+          <br>
+          얼굴상
+        </div>
+        <div id="form7" onclick="location.href='/hobby/'">
+          관심사
+        </div>
+      </div>
+      <br>
+      <p>제출 버튼을 누르면 매칭 신청이 완료됩니다!</p>
+      <div id="button">
+        <button type="submit">
+          제출
+        </label>
+      </div>
+    </body>
+  </main>
+
+</html>

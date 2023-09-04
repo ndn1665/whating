@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/menu.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="MenuContent">
+
+    <body>
+      <div id="Menu">
+        <div class="box1">
+          <br><br>
+          <p>
+            <strong>나의 프로필 정보</strong>
+          </p>
+        </div>
+        <div class="box2" onclick="goInfo();">
+          <p>
+            <strong>정보 확인</strong>
+          </p>
+        </div>
+        <div class="box3" onclick="gogo()">
+          <strong>왓팅 사용법 보기</strong>
+        </div>
+        <div class="box4">
+          <p>회원 탈퇴</p>
+        </div>
+        <script>
+          function goInfo() {
+            location.href = '/myinfo/';
+          }
+          function gogo() {
+            location.href = '/use/';
+          }
+        </script>
+      </body>
+    </main>
+
+  </html>

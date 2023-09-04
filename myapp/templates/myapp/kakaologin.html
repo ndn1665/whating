@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/kakaologin.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="KakaoLogin">
+
+    <body>
+
+      {% if check %}
+        <!--로그인 되어 있으면-->
+        <div>
+          <!--<br><br> <h1>카카오 로그아웃</h1> <form action="/kakaoLogout" method="GET"> <input type="submit" value="카카오로그아웃 및 연결 끊기"/> </form>-->
+          <br><br><br><br>로그인 되어 있습니다
+        </div>
+      {% else %}
+        <!--로그인 안되어 있으면 -->
+        <br><br><br><br>
+        <br>
+        <p> 카카오톡으로 <span style="color:rgb(241, 48, 128); text-emphasis-style: dot;">간편 로그인</span> 하기</p>
+        <div id="login">
+          <form method="GET">
+            <button type="submit" onclick=" form.action='/kakaoLoginLogic'">
+              <img src="/static/myapp/img/kakao_login_medium_narrow.png">
+            </div>
+            <br><br><br><br><br><br><br><br><br><br>
+            <div id="box">
+              <span> 홍개팅은 홍익대학교 컴퓨터공학과 학생 3명이 만들었어요! </span>
+              <br>
+              <span> 홍대 축제가 끝난 후 정식 오픈 예정이에요!</span>
+            </div>
+          {% endif %}
+        </body>
+      </main>
+
+    </html>
