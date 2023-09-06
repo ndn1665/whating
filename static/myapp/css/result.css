@@ -5,6 +5,7 @@
     grid-template-rows: repeat(5, 90px);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+    margin-right: 10px;
 }
 .box1 {
     grid-column: 1/5;

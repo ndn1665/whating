@@ -39,5 +39,5 @@ urlpatterns = [
     path('myinfo/',views.myinfo,name='myinfo'),
     path('success/',views.success,name='success'),
     path('youinfo/',views.youinfo,name='youinfo'),
-
+    path('kakaoid/',views.kakaoid,name='kakaoid')
 ]

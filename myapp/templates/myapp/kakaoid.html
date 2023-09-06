@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/kakaoid.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="AloneChoose2">
+
+    <script>
+      function checkAll() {
+        var checkbox1 = document.getElementsByName("kakaoid");
+        var selected1 = false; // 라디오 버튼이 선택되었는지 여부
+
+        for (var i = 0; i < checkbox1.length; i++) {
+          if (checkbox1[i]!==NULL) {
+            selected1 = true;
+            break;
+          }
+        }
+
+        if (!selected1) {
+          alert("카카오톡 아이디를 입력해주세요"); // 오류 메시지 출력
+          return false; // 폼 제출 방지
+        }
+      
+        document
+          .getElementById("kakaoid")
+          .value = selected1 ? "selected1" : "";
+
+        return true; // 폼 제출 허용
+      }
+    </script>
+
+    <body>
+      <br><br><br>
+      <p>마지막으로</p>
+      <p>매칭 후 연락을 위한</p>
+      <p><span style="color:rgb(241, 48, 128); text-emphasis-style: dot;">카카오톡</span><span> <span> <span style="color:rgb(241, 48, 128); text-emphasis-style: dot;">아이디</span>를 입력해주세요.</p>
+      <p>정확한 카카오톡 아이디를 입력하지 않으면</p>
+      <p>매칭 후 연락이 안 올 수 있습니다.</p>
+
+      <form id="Choose" action='/kakaoid/' method="post" onsubmit="return checkAll()">
+      <input type="text" name="kakaoid" placeholder="카카오톡 ID 입력" size=10 required></input>
+      <br><br>
+      <div id="button">
+        <button type="submit">
+          제출
+        </div>
+      </form>
+
+      <br><br><br><br>
+      <p> [카카오톡 아이디 확인 및 검색 설정 방법] </p>
+
+      <img src="/static/myapp/img/kakaoid1.jpg">
+      <p>1. 카카오톡 설정창으로 들어가기</p>
+      <img src="/static/myapp/img/kakaoid2.jpg">
+      <p>2. 프로필 관리 누르기</p>
+      <img src="/static/myapp/img/kakaoid3.jpg">
+      <p>3. 카카오톡 ID 누르기</p>
+      <img src="/static/myapp/img/kakaoid4.jpg">
+      <p>4. ID 검색 허용하기</p>
+
+    </body>
+    </main>
+</html>

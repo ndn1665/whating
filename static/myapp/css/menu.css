@@ -41,6 +41,16 @@
     border-radius: 30%;
     text-align: center;
 }
+.box5 {
+    grid-column: 1/4;
+    grid-row: 5;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(248, 178, 188);
+    border-style:dashed;
+    border-radius: 30%;
+    text-align: center;
+}
 #navButton4 {
     background-color: rgb(248, 178, 188);
 }

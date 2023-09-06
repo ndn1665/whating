@@ -168,13 +168,17 @@ function validateForm(count) {
             alert("취미를 최소한 하나 이상 선택해주세요.");
             return false;
         }
+        else if (selectedHobbyCount > 3) {
+            alert("취미는 3개까지만 선택할 수 있습니다.");
+            return false;
+        }
     } else if (count === 12) {
         const freeTextarea = document.getElementById("input2");
         if (!freeTextarea.value) {
             alert("자기소개를 입력해주세요.");
             return false;
         }
-    }
+    } 
     // 다른 질문에 대한 유효성 검사도 추가하세요
 
     return true;
@@ -191,7 +195,10 @@ function createStr(count) {
     else if(count==8) document.write("체형을 입력해주세요"); //탭으로(마름, 보통, 통통, 근육)
     else if(count==9) document.write("유/무쌍을 입력해주세요"); //탭으로
     else if(count==10) document.write("얼굴상을 입력해주세요"); //뚜렷, 두부
-    else if(count==11) document.write("관심사를 입력해주세요"); //탭으로
+    else if(count==11) {
+        document.write("관심사를 선택해주세요<br>");
+        document.write("최대 3가지까지만 선택 가능합니다.");
+     } //탭으로
     else if(count==12) {
         document.write("자유로운 자기소개<br>");
         document.write("최소 10자의 자기소개를 적어주세요.<br>");
@@ -284,10 +291,16 @@ function create(count) {
                 <input type=checkbox name=hobby id=19 value=cook > <label for = 19> 🍳요리 </label>"
     }
     else if(count==12) {
-        elem.innerHTML = "<br> <textarea name=free id=input2 cols=40 rows=10> </textarea> \
+        elem.innerHTML = "<br> <textarea name=free \
+        placeholder= 안녕하세요! 제 이름은 ooo입니다! <br> \
+        저는 홍익대학교에서 컴퓨터공학과를 다니고 있어요! <br>\
+        같이 놀면서 좋은 친구를 사귀고 싶어요! <br> \
+        물론 연애도 좋습니다ㅎㅎ <br>\
+        저는 단발머리에 옷을 좋아하는 분이 좋아요! <br>\
+        만나서 재밌게 놀아요^^ <br>\
+        id=input2 cols=40 rows=10> </textarea> \
         <p> 제출하면 자기소개가 완료됩니다! </p>"
     }
-
 }
 
 function major() {

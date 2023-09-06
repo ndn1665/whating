@@ -44,7 +44,6 @@ def kakaoLoginLogicRedirect(request):
     return redirect("/home") #로그인 완료 후엔 home페이지로
 
 def kakaoLogout(request):
-    
     _token = request.session['access_token']
     _url = 'https://kapi.kakao.com/v1/user/logout'
     _header = {
@@ -231,7 +230,7 @@ def my(request,id):
     global myinfo_arr
     index = int(id) + 1
     if request.method == "GET" and int(id) == 13: #13페이지까지 이동하고 14페이지면 choose로 이동
-        return redirect("/go") 
+        return redirect("/kakaoid") 
     if request.method == "POST":
         if int(id) == 1:
             age = request.POST.get("age")
@@ -338,3 +337,9 @@ def result(request):
 def menu(request):
 
     return render(request,"myapp/menu.html")
+
+@csrf_exempt
+def kakaoid(request):
+    if request.method == "POST":
+        return redirect("/go")
+    return render(request,"myapp/kakaoid.html")

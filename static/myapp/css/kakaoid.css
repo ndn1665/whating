@@ -39,44 +39,34 @@ button {
 #button {
     text-align: center;
 }
-ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-
-    margin: 0%;
-    padding: 0%;
-}
 #Choose {
-    place-items: left;
+    place-items: center;
     justify-content: center;
 }
-label {
-    width: 70px;
-    height: 50px;
-    border: 5px solid rgb(249, 199, 207);
+input[type="text"] {
     background-color: rgb(249, 199, 207);
-    border-radius: 5px;
-    display: inline-block;
-    cursor: pointer;
-    line-height: 50px;
-    margin: 10px
+    border-style: groove;
+    position: relative;
+    left: 28%;
+    width: 130px;
 }
-input[type="radio"]:checked + label {
-    border-color: rgb(246, 124, 144);
-    background-color: rgb(246, 124, 144);
+
+img {
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
 }
-input[type="radio"] {
-    display: none;
-}
+
 button {
     background-color: white;
     border-radius: 25%;
     border-color: white;
     border: none;
-    display: inline-block;
+    display: block;
     padding: 10px 10px;
     font-weight: 600;
     font-size: large;
     line-height: 15px;
+    grid-column: 1/2;
+    margin: auto;
 }

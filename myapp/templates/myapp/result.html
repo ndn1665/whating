@@ -8,9 +8,13 @@
       <div id="Result">
         <div class="box1">
           <br><br>
-          <p style="color:rgb(241, 48, 128); text-emphasis-style: dot;">
-            <strong>매칭된 상대</strong>
-          </p>
+          <span style="color:rgb(241, 48, 128); text-emphasis-style: dot;">
+            <strong>매칭된</strong>
+          </span>
+          <span> </span>
+          <span style="color:rgb(241, 48, 128); text-emphasis-style: dot;">
+            <strong>상대</strong>
+          </span>
         </div>
         <div class="box2">
           <p>
@@ -97,6 +101,40 @@
                 location.href = '/fail/';
             }
         }
+         function numcheck() {
+          if({{peoplenum!==1}}) {
+            box2.style.opacity=0.7;
+            box3.style.opacity=0.7;
+            box4.style.opacity=0.7;
+
+            box3.style.pointerEvents="none";
+            box4.style.pointerEvents="none";
+          }
+          else if({{peoplenum!==2}}) {
+            box5.style.opacity=0.7;
+            box6.style.opacity=0.7;
+            box7.style.opacity=0.7;
+
+            box6.style.pointerEvents="none";
+            box7.style.pointerEvents="none";
+          }
+          else if({{peoplenum!==3}}) {
+            box8.style.opacity=0.7;
+            box9.style.opacity=0.7;
+            box10.style.opacity=0.7;
+
+            box9.style.pointerEvents="none";
+            box10.style.pointerEvents="none";
+          }
+          else if({{peoplenum!==4}}) {
+            box11.style.opacity=0.7;
+            box12.style.opacity=0.7;
+            box13.style.opacity=0.7;
+
+            box12.style.pointerEvents="none";
+            box13.style.pointerEvents="none";
+          }
+         }
     </script>
     </body>
   </main>
