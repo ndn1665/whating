@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko">{% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/css/logout.css' %}">
+  {% include 'myapp/index.html' %}
+  <main class="AloneChoose2">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout</title>
-  </head>
-
-  <body>
-    <h2>로그아웃이 정상적으로 처리되었습니다</h2>
-    <a href="/home">HOME</a>
-  </body>
-
-</html>
+    <body>
+      <br><br><br><br>
+      <p>
+        로그아웃이 완료되었습니다.
+      <p>
+        </body>
+      </main>
+      <script>
+        setTimeout(function () {
+          // 2.5초 후에 home 페이지로 리디렉션합니다.
+          window.location.href = '/home';
+        }, 2500); // 2500 밀리초 = 2.5초 일부러 3초 보다 짧게함
+      </script>
+    </html>

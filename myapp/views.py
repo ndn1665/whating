@@ -44,6 +44,11 @@ def kakaoLoginLogicRedirect(request):
     return redirect("/home") #로그인 완료 후엔 home페이지로
 
 def kakaoLogout(request):
+    access_token = request.session.get("access_token",None)
+    if access_token == None: #로그인 안돼있으면
+        return redirect("/home") #걍 home으로 보내기
+
+
     _token = request.session['access_token']
     _url = 'https://kapi.kakao.com/v1/user/logout'
     _header = {
