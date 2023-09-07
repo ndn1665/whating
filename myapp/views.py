@@ -429,12 +429,11 @@ def menu(request):
 
 @csrf_exempt
 def kakaoid(request):
-    access_token = request.session.get("access_token", None)
-    if access_token is None:
-        return render(request, "myapp/kakaologin.html")
+    access_token = request.session.get("access_token",None)
+    if access_token == None: #로그인 안돼있으면
+        return redirect("/kakaologin")
 
-    account_info = requests.get("https://kapi.kakao.com/v2/user/me",
-                                headers={"Authorization": f"Bearer {access_token}"}).json()
+    account_info = requests.get("https://kapi.kakao.com/v2/user/me",headers={"Authorization": f"Bearer {access_token}"}).json()
 
     if request.method == "POST":
         kakao_id = account_info.get("id")
