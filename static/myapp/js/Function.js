@@ -291,14 +291,7 @@ function create(count) {
                 <input type=checkbox name=hobby id=19 value=cook > <label for = 19> 🍳요리 </label>"
     }
     else if(count==12) {
-        elem.innerHTML = "<br> <textarea name=free \
-        placeholder= 안녕하세요! 제 이름은 ooo입니다! <br> \
-        저는 홍익대학교에서 컴퓨터공학과를 다니고 있어요! <br>\
-        같이 놀면서 좋은 친구를 사귀고 싶어요! <br> \
-        물론 연애도 좋습니다ㅎㅎ <br>\
-        저는 단발머리에 옷을 좋아하는 분이 좋아요! <br>\
-        만나서 재밌게 놀아요^^ <br>\
-        id=input2 cols=40 rows=10> </textarea> \
+        elem.innerHTML = "<br> <textarea name=free id=input2 cols=40 rows=10> </textarea> \
         <p> 제출하면 자기소개가 완료됩니다! </p>"
     }
 }
