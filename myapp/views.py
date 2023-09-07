@@ -371,7 +371,7 @@ def my(request,id):
                     free=request.session.get('free')
                 )
             request.session.clear()
-            return redirect("/success/")  # 모든 정보를 입력한 후 성공 페이지로 이동
+            return redirect("/kakaoid/")  # 모든 정보를 입력한 후 성공 페이지로 이동
         else:
             return redirect(f"/my/{index2}")  # 다음 페이지로 이동
 
