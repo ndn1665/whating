@@ -19,13 +19,14 @@ def index(request):
 
 def kakaologin(request):
     context = {'check':False}
-    if request.session.get('access_token'): #만약 세션에 access_token이 있으면(==로그인 되어 있으면)
-        access_token = request.session.get('access_token')
+    access_token = request.session.get("access_token",None)
+    if access_token: #만약 세션에 access_token이 있으면(==로그인 되어 있으면)
         account_info = requests.get("https://kapi.kakao.com/v2/user/me",
                                     headers={"Authorization": f"Bearer {access_token}"}).json()
         kakao_id = account_info.get("id")
         try:
             user_profile = Info.objects.get(kakao_id=kakao_id)  # 카카오톡 ID를 사용하여 사용자 정보 조회
+            print(kakao_id)
             context['user_profile'] = user_profile
         except Info.DoesNotExist:
             # 새로운 레코드 생성
