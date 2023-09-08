@@ -36,9 +36,8 @@
         document.write("")
     }
 
-    function meetCheck() {
-      if (/* result=success */
-      true) {
+    function meetCheck(check) {
+      if (false/*check==매칭 됐으면*/) {
         document
           .getElementById("box5")
           .style
@@ -55,8 +54,7 @@
           .getElementById("box8")
           .style
           .opacity = 0;
-      } else if (/* result=fail */
-      true) {
+      } else if (true/*check==매칭 안됐으면*/) {
         document
           .getElementById("box5")
           .style
@@ -93,24 +91,24 @@
             check();
           </script>
         </div>
-        <div id="box5" onclick="Home();">
+        <div id="box5">
           <!-- 버튼이 box7과 반대로 눌려서 함수 둘이 바꿈 -->
           <p>
             <strong>만나볼래요!</strong>
           </p>
           <!-- 카톡 아이디 알려주는 창으로 -->
         </div>
-        <div id="box6" onclick="/* 백에서 리턴값 fail로 바꿔주고 아님 여기서 바로 값 바꾸고*/ meetCheck()">
+        <div id="box6" onclick="stop()"> <!--여기가 box8 함수-->
           <p>
             <strong>다음에 만날래요</strong>
           </p>
         </div>
         <div id="box7" onclick="go();">
           <p>
-            <strong>매칭 재진행</strong>
+            <p>매칭 재진행은 자동으로 이루어집니다</p>
           </p>
         </div>
-        <div id="box8" onclick="/*매칭 멈추기 상태 함수(백엔드)*/">
+        <div id="box8" onclick="meetCheck("매칭 안됐으면")"> <!--이게 box6 함수-->
           <p>
             <strong>매칭 멈추기</strong>
           </p>
@@ -132,6 +130,9 @@
 
         function goInfo() {
           location.href = '/youinfo/';
+        }
+        function stop() {
+          return //백으로 매칭 안 하는 상태로 바꾸는 거 리턴
         }
       </script>
     </body>

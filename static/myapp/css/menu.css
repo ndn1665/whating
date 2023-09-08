@@ -50,6 +50,7 @@
     border-style:dashed;
     border-radius: 30%;
     text-align: center;
+    opacity: 0;
 }
 #navButton4 {
     background-color: rgb(248, 178, 188);

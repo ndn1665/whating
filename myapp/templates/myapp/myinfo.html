@@ -1,6 +1,5 @@
 <meta charset="utf-8">
 
-
 <!DOCTYPE html>
 <html lang="ko">
 {% load static %}
@@ -16,20 +15,77 @@
     <h2>내 정보</h2>
     <br><br>
     <div id="Info">
-      <p>나이: {{ user_profile.age }}</p>
-      <p>미팅 인원수: {{ user_profile.peoplenum }}</p>
-      <p>직업: {{ user_profile.job }}</p>
-      <p>학교와 학과: {{ user_profile.school }} {{ user_profile.major }}</p>
-      <p>mbti: {{ user_profile.mbti }}</p>
-      {% if user_profile.gender == 'M' %}<p>군/미필: {{ user_profile.army }}</p>{% endif %}
-      <p>키: {{ user_profile.height }}</p>
-      <p>체형: {{ user_profile.body }}</p>
-      <p>유/무쌍: {{ user_profile.eyes }}</p>
-      <p>얼굴상: {{ user_profile.face }}</p>
-      <p>관심사: {{ user_profile.hobby }}</p>
+      <p>나이: {{ user_profile.age }}살</p>
+      <p>미팅 인원수: {{ user_profile.peoplenum }}명</p>
+      <p>직업: 
+      {% if user_profile.job == 'univstu' %}
+        대학생
+      {% elif user_profile.job == 'gradustu' %}
+        대학원생
+      {% elif user_profile.job == 'human' %}
+        취준생
+      {% elif user_profile.job == 'worker' %}
+        직장인
+      {% endif %}
+      </p>
+      <p>학교와 학과: 
+        {{ user_profile.school }}
+  {% if user_profile.major == 'liberal' %}
+    문과대
+  {% elif user_profile.major == 'science' %}
+    이과대
+  {% elif user_profile.major == 'education' %}
+    사범대
+  {% elif user_profile.major == 'physical' %}
+    체대
+  {% elif user_profile.major == 'art' %}
+    미대
+  {% elif user_profile.major == 'entertain' %}
+    예대
+  {% elif user_profile.major == 'music' %}
+    음대
+  {% elif user_profile.major == 'medicine' %}
+    의/약대
+  {% elif user_profile.major == 'special' %}
+    특수대
+  {% endif %}
+      </p>
+      <p>mbti: {{ user_profile.mbti }} </p>
+    </p>
+      {% if user_profile.gender == 'M' %}<p>군/미필: 
+        {% if user_profile.army == 'go' %}
+        군필
+      {% elif user_profile.army == 'nongo' %}
+        미필
+      {% endif %}
+      </p>{% endif %}
+      <p>키: {{ user_profile.height }}cm</p>
+      <p>체형: 
+        {% if user_profile.body == 'thin' %}
+        마름
+      {% elif user_profile.body == 'normal' %}
+        보통
+      {% elif user_profile.body == 'fat' %}
+        통통
+      {% elif user_profile.body == 'muscle' %}
+        탄탄
+      {% endif %}</p>
+      <p>유/무쌍: 
+        {% if user_profile.eyes == 'yes' %}
+        유쌍
+      {% elif user_profile.eyes == 'no' %}
+        무쌍
+      {% endif %}</p>
+      <p>얼굴상: 
+        {% if user_profile.face == 'tubu' %}
+        두부상
+      {% elif user_profile.face == 'arab' %}
+        뚜렷상
+      {% endif %}</p>
+      <p>관심사: {{ user_profile.hobby }}
     </div>
     <div id="Info2">
-      <p>자유로운 자기소개: {{ user_profile.introduction }}</p>
+      <p>자유로운 자기소개: {{ user_profile.free }}</p>
     </div>
     <br>
     <div class="box1" onclick="gomyInfo();">

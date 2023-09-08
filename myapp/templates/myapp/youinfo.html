@@ -13,17 +13,17 @@
       <h2>상대 정보</h2>
       <br><br>
       <div id="Info">
-        <p>나이: {{ matched_profiles.age }}</p>
-        <p>미팅 인원수: {{ matched_profiles.peoplenum }}</p>
-        <p>직업: {{ matched_profiles.job }}</p>
-        <p>학교와 학과: {{ matched_profiles.graduate }}</p>
-        <p>mbti: {{ matched_profiles.mbti }}</p>
-        {% if matched_profiles.gender == 'M' %}<p>군/미필: {{ matched_profiles.army }}</p>{% endif %}
-        <p>키: {{ matched_profiles.height }}</p>
-        <p>체형: {{ matched_profiles.body }}</p>
-        <p>유/무쌍: {{ matched_profiles.eyes }}</p>
-        <p>얼굴상: {{ matched_profiles.face }}</p>
-        <p>관심사: {{ matched_profiles.hobby }}</p>
+      <p>나이: {{ matched_profiles.age }}살</p>
+      <p>미팅 인원수: {{ matched_profiles.peoplenum }}명</p>
+      <p>직업: <script>printjob({{matched_profiles.job }})</script></p>
+      <p>학교와 학과: {{ matched_profile.school }} <script>printmajor({{matched_profile.major }})</script></p>
+      <p>mbti: <script>printmbti({{ matched_profiles.mbti }})</script></p>
+      {% if matched_profiles.gender == 'M' %}<p>군/미필: <script>printarmy({{matched_profiles.army }})</script></p>{% endif %}
+      <p>키: {{ matched_profiles.height }}cm</p>
+      <p>체형: <script>printbody({{matched_profiles.body }})</script></p>
+      <p>유/무쌍: <script>printeyes({{matched_profiles.eyes}})</script></p>
+      <p>얼굴상: <script>printface({{matched_profiles.face}})</script></p>
+      <p>관심사: <script>printhobby({{matched_profiles.hobby}})</script></p>
       </div>
       <div id="Info2">
         <p>자유로운 자기소개: {{ matched_profiles.introduction }}</p>

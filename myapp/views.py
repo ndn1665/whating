@@ -15,8 +15,6 @@ from django.db.models import Q
 def index(request):
    return redirect("/home")
 
-
-
 def kakaologin(request):
     context = {'check':False}
     access_token = request.session.get("access_token",None)
@@ -24,7 +22,6 @@ def kakaologin(request):
         account_info = requests.get("https://kapi.kakao.com/v2/user/me",
                                     headers={"Authorization": f"Bearer {access_token}"}).json()
         kakao_id = account_info.get("id")
-        print(kakao_id)
         try:
             user_profile = Info.objects.get(kakao_id=kakao_id)  # 카카오톡 ID를 사용하여 사용자 정보 조회
             print(kakao_id)
@@ -62,22 +59,9 @@ def kakaoLogout(request):
     if access_token == None: #로그인 안돼있으면
         return redirect("/home") #걍 home으로 보내기
 
-
-    _token = request.session['access_token']
-    _url = 'https://kapi.kakao.com/v1/user/logout'
-    _header = {
-      'Authorization': f'bearer {_token}'
-    }
-    _res = requests.post(_url, headers=_header)
-    _result = _res.json()
-    
-    print(_result.get('id'))#액세스 토큰은 바뀌어도 id값은 안바뀌니 이것으로 조회 가능
-    if _result.get('id'):
-        
+    else:
         del request.session['access_token']
         return render(request, 'myapp/loginoutsuccess.html')
-    else:
-        return render(request, 'myapp/logouterror.html')
 
 
 @csrf_exempt
@@ -140,8 +124,8 @@ def meeting2(request):
 
 
     if request.method == "POST": # /home/meeting2 로 선호 직업, 장소, 나이 전달
-        jobs = request.POST.get('submit_job')
-        ages = request.POST.get('submit_age')
+        jobs = request.POST.get('submit_job').split(', ')
+        ages = request.POST.get('submit_age').split(', ')#', '로 파싱해서 데이터베이스 저장
 
         kakao_id = account_info.get("id")
         
@@ -162,7 +146,7 @@ def meeting2(request):
         
         return redirect("/good/")
 
-    count += 1
+    #count += 1  여기 때문에 meeting2.html 에서 오류 -> 주석처리
     return render(request, "myapp/meeting2.html")
 
 @csrf_exempt
@@ -240,6 +224,7 @@ def mbti(request):
 @csrf_exempt
 def myinfo(request):
     access_token = request.session.get("access_token",None)
+    print(access_token)
     if access_token == None: #로그인 안돼있으면
         return render(request,"myapp/kakaologin.html") #로그인 시키기
     
@@ -316,7 +301,13 @@ def my(request,id):
             request.session['school'] = request.POST.get("school")
             request.session['major'] = request.POST.get("major")
         elif index == 5:
-            request.session['mbti'] = request.POST.get("mbti")
+            selected_mbti = []
+            for i in range(1, 5):
+                mbti_value = request.POST.get(f"mbti{i}")
+                if mbti_value:
+                    selected_mbti.append(mbti_value)
+                selected_mbti_str = ''.join(selected_mbti)
+                request.session['mbti'] = selected_mbti_str
         elif index == 6:
             request.session['army'] = request.POST.get("army")
         elif index == 7:
@@ -330,7 +321,8 @@ def my(request,id):
         elif index == 11:
             # hobby 필드는 복수 선택 가능이므로 리스트로 저장
             hobby_list = request.POST.getlist("hobby")
-            request.session['hobby'] = hobby_list  # 세션에 저장
+            hobby_str = ', '.join(hobby_list)  # 선택한 취미를 문자열로 합치기
+            request.session['hobby'] = hobby_str  # 세션에 저장
         elif index == 12:
             request.session['free'] = request.POST.get("free")
         else:
@@ -372,7 +364,6 @@ def my(request,id):
                     hobby=request.session.get('hobby'),
                     free=request.session.get('free')
                 )
-            request.session.clear()
             return redirect("/kakaoid/")  # 모든 정보를 입력한 후 성공 페이지로 이동
         else:
             return redirect(f"/my/{index2}")  # 다음 페이지로 이동
@@ -418,7 +409,6 @@ def use(request):
 @csrf_exempt
 def result(request):#추후 보강 해야함(09.07)
     #db에서 신청한 매칭인원 정보를 받아와서 html에 넘겨서 특정 매칭만 결과확인할 수 있도록 하기
-    context = {'matched' : 1}#매칭되면 matched 값 1 안되면 None
     access_token = request.session.get("access_token",None)
     if access_token == None: #로그인 안돼있으면
         return render(request,"myapp/kakaologin.html") #로그인 시키기
