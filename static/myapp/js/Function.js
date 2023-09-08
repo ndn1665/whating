@@ -236,14 +236,14 @@ function create(count) {
         <input type=radio id=9 name=major value=special> <label for = 9> 특수대 </label> "
     }
     else if(count==5) {
-        elem.innerHTML = "<input type=radio id=1 name=mbti1 value=e> <label for=1> E </label> \
-        <input type=radio id=5 name=mbti1 value=i> <label for=5> I </label>\
-        <input type=radio id=2 name=mbti2 value=s> <label for=2> S </label> \
-        <input type=radio id=6 name=mbti2 value=n> <label for=6> N </label>\
-        <input type=radio id=3 name=mbti3 value=f> <label for=3> F </label>\
-        <input type=radio id=7 name=mbti3 value=t> <label for=7> T </label>\
-        <input type=radio id=4 name=mbti4 value=j> <label for=4> J </label>\
-        <input type=radio id=8 name=mbti4 value=p> <label for=8> P </label> "
+        elem.innerHTML = "<input type=radio id=1 name=mbti1 value=E> <label for=1> E </label> \
+        <input type=radio id=5 name=mbti1 value=I> <label for=5> I </label>\
+        <input type=radio id=2 name=mbti2 value=S> <label for=2> S </label> \
+        <input type=radio id=6 name=mbti2 value=N> <label for=6> N </label>\
+        <input type=radio id=3 name=mbti3 value=F> <label for=3> F </label>\
+        <input type=radio id=7 name=mbti3 value=T> <label for=7> T </label>\
+        <input type=radio id=4 name=mbti4 value=J> <label for=4> J </label>\
+        <input type=radio id=8 name=mbti4 value=P> <label for=8> P </label> "
     }
     else if(count==6) {
         elem.innerHTML = "<input type=radio id=1 name=army value=go > <label for=1> 군필 </label> \

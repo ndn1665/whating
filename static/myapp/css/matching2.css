@@ -1,17 +1,16 @@
 #matching {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 100px);
     grid-column-gap: 30px;
     grid-row-gap: 20px;
 }
 .box1 {
-    grid-column: 2/8;
+    grid-column: 1/9;
     grid-row: 2;
     display: inline-block;
     text-align: center;
     font-size: larger;
-    opacity: 0;
 }
 .box2 {
     grid-column: 2/8;
@@ -55,8 +54,9 @@
     border-style:dashed;
     border-radius: 30%;
     text-align: center;
+    font-size: small;
     opacity: 0;
-    line-height: 63.2px;
+    line-height:35px;
 }
 #box8 {
     grid-column: 5/9;

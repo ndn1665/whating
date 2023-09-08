@@ -71,7 +71,12 @@ def home(request):
     access_token = request.session.get("access_token",None)
     if access_token:
         logged = 1
-
+        account_info = requests.get("https://kapi.kakao.com/v2/user/me",
+                                headers={"Authorization": f"Bearer {access_token}"}).json()
+        kakao_id = account_info.get("id")
+        user_info = Info.objects.filter(kakao_id=kakao_id).first()
+        if user_info.kakaotalk_id :
+            logged = 2
     context = {'logged':logged}
     return render(request, "myapp/home.html",context)
 
@@ -188,7 +193,7 @@ def height(request):
 def hobby(request):
 
     return render(request, "myapp/hobby.html")
-@csrf_exempt
+
 def kakao(request):
     access_token = request.session.get("access_token", None)
     if access_token == None:  # 로그인 안돼있으면
@@ -198,9 +203,7 @@ def kakao(request):
                                 headers={"Authorization": f"Bearer {access_token}"}).json()
     if request.method == 'GET':
         kakao_id = account_info.get("id")
-        print("kakao_id : ", kakao_id)
 
-        # 예를 들어 사용자의 정보가 다음과 같다면:
         user_info = Info.objects.get(kakao_id=kakao_id)
         user_gender = user_info.sex
         peoplenum = user_info.peoplenum
@@ -208,10 +211,13 @@ def kakao(request):
         jobs = user_info.jobs.split(',')
 
         matched_profiles = match_info_profiles(user_gender, peoplenum, ages, jobs)
-        # matched_profiles = Info.objects.get(kakao_id=1)
-        return render(request, 'myapp/kakao.html', {'matched_profiles': matched_profiles})
+
+        if matched_profiles:
+            first_matched_profile = matched_profiles[0]
+            return render(request, 'myapp/kakao.html', {'matched_profiles': first_matched_profile})
 
     return render(request, "myapp/kakao.html")
+
 @csrf_exempt
 def major(request):
 
@@ -280,6 +286,8 @@ def my(request,id):
 
         if not is_valid_transition(current_page, id):
             # 올바른 페이지 이동이 아니면 거부
+            if id == '2' and request.session['sex'] == 'female': #여자면 4로 이동되도록 함. 3이 army여야함
+                return True 
             return HttpResponseForbidden("Forbidden")
 
         # 페이지 이동을 허용하고, 세션 업데이트
@@ -295,6 +303,8 @@ def my(request,id):
             request.session['age'] = request.POST.get("age")
         elif index == 2:
             request.session['sex'] = request.POST.get("sex")
+            if request.session['sex'] == 'female':
+                index +=1
         elif index == 3:
             request.session['job'] = request.POST.get("job")
         elif index == 4:
@@ -406,14 +416,20 @@ def use(request):
 
     return render(request, "myapp/use.html")
 
-@csrf_exempt
-def result(request):#추후 보강 해야함(09.07)
-    #db에서 신청한 매칭인원 정보를 받아와서 html에 넘겨서 특정 매칭만 결과확인할 수 있도록 하기
-    access_token = request.session.get("access_token",None)
-    if access_token == None: #로그인 안돼있으면
-        return render(request,"myapp/kakaologin.html") #로그인 시키기
-    return render(request,"myapp/result.html")
-    
+def result(request):  # 추후 보강 해야함(09.07)
+    access_token = request.session.get("access_token", None)
+    if access_token == None:  # 로그인 안돼있으면
+        return render(request, "myapp/kakaologin.html")  # 로그인 시키기
+
+    account_info = requests.get("https://kapi.kakao.com/v2/user/me",
+                                headers={"Authorization": f"Bearer {access_token}"}).json()
+    if request.method == 'GET':
+        kakao_id = account_info.get("id")
+        print("kakao_id : ", kakao_id)
+
+        # 예를 들어 사용자의 정보가 다음과 같다면:
+        user_info = Info.objects.get(kakao_id=kakao_id)
+    return render(request, "myapp/result.html", {'user_info': user_info})
 @csrf_exempt
 def menu(request):
 

@@ -15,74 +15,73 @@
     <h2>내 정보</h2>
     <br><br>
     <div id="Info">
-      <p>나이: {{ user_profile.age }}살</p>
-      <p>미팅 인원수: {{ user_profile.peoplenum }}명</p>
-      <p>직업: 
+      <p>안녕? 내 나이는 {{ user_profile.age }}살이야!</p>
+      <p>친구 {{ user_profile.peoplenum }}명이랑 미팅 신청했어!</p>
+      <p>나는
       {% if user_profile.job == 'univstu' %}
-        대학생
+        대학생이야
       {% elif user_profile.job == 'gradustu' %}
-        대학원생
+        대학원생이야
       {% elif user_profile.job == 'human' %}
-        취준생
+        취준생이야
       {% elif user_profile.job == 'worker' %}
-        직장인
-      {% endif %}
-      </p>
-      <p>학교와 학과: 
+        직장인이야
+      {% endif %}</p>
+      <p>
         {{ user_profile.school }}
   {% if user_profile.major == 'liberal' %}
-    문과대
+    문과대에 다니고 있어
   {% elif user_profile.major == 'science' %}
-    이과대
+    이과대에 다니고 있어
   {% elif user_profile.major == 'education' %}
-    사범대
+    사범대에 다니고 있어
   {% elif user_profile.major == 'physical' %}
-    체대
+    체대에 다니고 있어
   {% elif user_profile.major == 'art' %}
-    미대
+    미대에 다니고 있어
   {% elif user_profile.major == 'entertain' %}
-    예대
+    예대에 다니고 있어
   {% elif user_profile.major == 'music' %}
-    음대
+    음대에 다니고 있어
   {% elif user_profile.major == 'medicine' %}
-    의/약대
+    의/약대에 다니고 있어
   {% elif user_profile.major == 'special' %}
-    특수대
+    특수대에 다니고 있어
   {% endif %}
       </p>
-      <p>mbti: {{ user_profile.mbti }} </p>
+      <p>mbti는 {{ user_profile.mbti }}이야 </p>
     </p>
-      {% if user_profile.gender == 'M' %}<p>군/미필: 
+      {% if user_profile.sex == 'male' %}<p>
         {% if user_profile.army == 'go' %}
-        군필
+        군대는 다녀왔어!
       {% elif user_profile.army == 'nongo' %}
-        미필
+        군대는 아직 안 갔어
       {% endif %}
       </p>{% endif %}
-      <p>키: {{ user_profile.height }}cm</p>
-      <p>체형: 
+      <p>키는 {{ user_profile.height }}cm고 </p>
+      <p>체형은
         {% if user_profile.body == 'thin' %}
-        마름
+        마른편이야
       {% elif user_profile.body == 'normal' %}
-        보통
+        보통인 편이야
       {% elif user_profile.body == 'fat' %}
-        통통
+        통통한 편이야
       {% elif user_profile.body == 'muscle' %}
-        탄탄
+        탄탄한 편이야
       {% endif %}</p>
-      <p>유/무쌍: 
+      <p>
         {% if user_profile.eyes == 'yes' %}
-        유쌍
+        유쌍 눈을 가지고 있고
       {% elif user_profile.eyes == 'no' %}
-        무쌍
+        무쌍 눈을 가지고 있고
       {% endif %}</p>
-      <p>얼굴상: 
+      <p>
         {% if user_profile.face == 'tubu' %}
-        두부상
+        얼굴은 두부상이야
       {% elif user_profile.face == 'arab' %}
-        뚜렷상
+        얼굴은 뚜렷상이야
       {% endif %}</p>
-      <p>관심사: {{ user_profile.hobby }}
+      <p>{{ user_profile.hobby }}에 관심이 있어!
     </div>
     <div id="Info2">
       <p>자유로운 자기소개: {{ user_profile.free }}</p>

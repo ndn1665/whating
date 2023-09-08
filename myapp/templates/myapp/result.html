@@ -6,7 +6,7 @@
 
     <body>
       <div id="Result">
-        <div class="box1">
+        <div id="box1">
           <br><br>
           <span style="color:rgb(241, 48, 128); text-emphasis-style: dot;">
             <strong>매칭된</strong>
@@ -16,73 +16,73 @@
             <strong>상대</strong>
           </span>
         </div>
-        <div class="box2">
+        <div id="box2">
           <p>
             <strong>소개팅</strong>
           </p>
           <!--소개팅 or 미팅(2:2, 3:3 등)으로 뜨게-->
         </div>
-        <div class="box3" onclick="goYouInfo();">
+        <div id="box3" onclick="goYouInfo();">
           <p>
             <strong>상대정보<br>
               <span style="color:violet;">확인</span></strong>
           </p>
         </div>
-        <div class="box4" onclick="goKakao();">
+        <div id="box4" onclick="goKakao();">
           <p>
             <strong>카톡아이디<br>
               <span style="color:violet;">확인</span></strong>
           </p>
         </div>
-        <div class="box5">
+        <div id="box5">
           <p>
             <strong>2:2 미팅</strong>
           </p>
           <!--소개팅 or 미팅(2:2, 3:3 등)으로 뜨게-->
         </div>
-        <div class="box6" onclick="goYouInfo();">
+        <div id="box6" onclick="goYouInfo();">
           <p>
             <strong>상대정보<br>
               <span style="color:violet;">확인</span></strong>
           </p>
         </div>
-        <div class="box7" onclick="goKakao();">
+        <div id="box7" onclick="goKakao();">
           <p>
             <strong>카톡아이디<br>
               <span style="color:violet;">확인</span></strong>
           </p>
         </div>
-        <div class="box8">
+        <div id="box8">
           <p>
             <strong>3:3 미팅</strong>
           </p>
           <!--소개팅 or 미팅(2:2, 3:3 등)으로 뜨게-->
         </div>
-        <div class="box9" onclick="goYouInfo();">
+        <div id="box9" onclick="goYouInfo();">
           <p>
             <strong>상대정보<br>
               <span style="color:violet;">확인</span></strong>
           </p>
         </div>
-        <div class="box10" onclick="goKakao();">
+        <div id="box10" onclick="goKakao();">
           <p>
             <strong>카톡아이디<br>
               <span style="color:violet;">확인</span></strong>
           </p>
         </div>
-        <div class="box11">
+        <div id="box11">
           <p>
             <strong>4:4 미팅</strong>
           </p>
           <!--소개팅 or 미팅(2:2, 3:3 등)으로 뜨게-->
         </div>
-        <div class="box12" onclick="goYouInfo();">
+        <div id="box12" onclick="goYouInfo();">
           <p>
             <strong>상대정보<br>
               <span style="color:violet;">확인</span></strong>
           </p>
         </div>
-        <div class="box13" onclick="goKakao();">
+        <div id="box13" onclick="goKakao();">
           <p>
             <strong>카톡아이디<br>
               <span style="color:violet;">확인</span></strong>
@@ -95,44 +95,59 @@
         }
     
         function goKakao() {
-            if ({{matched}}) {
+            if (true) {
                 location.href = '/kakao/';
             } else {
                 location.href = '/fail/';
             }
         }
-         function numcheck() {
-          if({{peoplenum!==1}}) {
-            box2.style.opacity=0.7;
-            box3.style.opacity=0.7;
-            box4.style.opacity=0.7;
 
-            box3.style.pointerEvents="none";
-            box4.style.pointerEvents="none";
+        var peoplenum = {{ user_info.peoplenum }};
+        numcheck(peoplenum);
+
+         function numcheck(peoplenum) {
+          var box2 = document.getElementById("box2");
+          var box3 = document.getElementById("box3");
+          var box4 = document.getElementById("box4");
+          var box5 = document.getElementById("box5");
+          var box6 = document.getElementById("box6");
+          var box7 = document.getElementById("box7");
+          var box8 = document.getElementById("box8");
+          var box9 = document.getElementById("box9");
+          var box10 = document.getElementById("box10");
+          var box11 = document.getElementById("box11");
+          var box12 = document.getElementById("box12");
+          var box13 = document.getElementById("box23");
+          if(peoplenum===1) {
+            box2.style.opacity=1
+            box4.style.opacity=1;
+
+            box3.style.pointerEvents="all";
+            box4.style.pointerEvents="all";
           }
-          else if({{peoplenum!==2}}) {
-            box5.style.opacity=0.7;
-            box6.style.opacity=0.7;
-            box7.style.opacity=0.7;
+          else if(peoplenum===2) {
+            box5.style.opacity=1;
+            box6.style.opacity=1;
+            box7.style.opacity=1;
 
-            box6.style.pointerEvents="none";
-            box7.style.pointerEvents="none";
+            box6.style.pointerEvents="all";
+            box7.style.pointerEvents="all";
           }
-          else if({{peoplenum!==3}}) {
-            box8.style.opacity=0.7;
-            box9.style.opacity=0.7;
-            box10.style.opacity=0.7;
+          else if(peoplenum===3) {
+            box8.style.opacity=1;
+            box9.style.opacity=1;
+            box10.style.opacity=1;
 
-            box9.style.pointerEvents="none";
-            box10.style.pointerEvents="none";
+            box9.style.pointerEvents="all";
+            box10.style.pointerEvents="all";
           }
-          else if({{peoplenum!==4}}) {
-            box11.style.opacity=0.7;
-            box12.style.opacity=0.7;
-            box13.style.opacity=0.7;
+          else if(peoplenum===4) {
+            box11.style.opacity=1;
+            box12.style.opacity=1;
+            box13.style.opacity=1;
 
-            box12.style.pointerEvents="none";
-            box13.style.pointerEvents="none";
+            box12.style.pointerEvents="all";
+            box13.style.pointerEvents="all";
           }
          }
     </script>

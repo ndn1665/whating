@@ -13,20 +13,81 @@
       <h2>상대 정보</h2>
       <br><br>
       <div id="Info">
-      <p>나이: {{ matched_profiles.age }}살</p>
-      <p>미팅 인원수: {{ matched_profiles.peoplenum }}명</p>
-      <p>직업: <script>printjob({{matched_profiles.job }})</script></p>
-      <p>학교와 학과: {{ matched_profile.school }} <script>printmajor({{matched_profile.major }})</script></p>
-      <p>mbti: <script>printmbti({{ matched_profiles.mbti }})</script></p>
-      {% if matched_profiles.gender == 'M' %}<p>군/미필: <script>printarmy({{matched_profiles.army }})</script></p>{% endif %}
-      <p>키: {{ matched_profiles.height }}cm</p>
-      <p>체형: <script>printbody({{matched_profiles.body }})</script></p>
-      <p>유/무쌍: <script>printeyes({{matched_profiles.eyes}})</script></p>
-      <p>얼굴상: <script>printface({{matched_profiles.face}})</script></p>
-      <p>관심사: <script>printhobby({{matched_profiles.hobby}})</script></p>
+      <p>안녕? 내 나이는 {{ matched_profiles.age }}살이야!</p>
+      <p>친구 {{ matched_profiles.peoplenum }}명이랑 미팅 신청했어!</p>
+      <p>나는 
+        {% if matched_profiles.job == 'univstu' %}
+        대학생이야
+      {% elif matched_profiles.job == 'gradustu' %}
+        대학원생이야
+      {% elif matched_profiles.job == 'human' %}
+        취준생이야
+      {% elif matched_profiles.job == 'worker' %}
+        직장인이야
+      {% endif %}
+      </p>
+      <p>
+        {{ matched_profile.school }} 
+        {% if matched_profile.major == 'liberal' %}
+    문과대에 다니고 있어
+  {% elif matched_profile.major == 'science' %}
+    이과대에 다니고 있어
+  {% elif matched_profile.major == 'education' %}
+    사범대에 다니고 있어
+  {% elif matched_profile.major == 'physical' %}
+    체대에 다니고 있어
+  {% elif matched_profile.major == 'art' %}
+    미대에 다니고 있어
+  {% elif matched_profile.major == 'entertain' %}
+    예대에 다니고 있어
+  {% elif matched_profile.major == 'music' %}
+    음대에 다니고 있어
+  {% elif matched_profile.major == 'medicine' %}
+    의/약대에 다니고 있어
+  {% elif matched_profile.major == 'special' %}
+    특수대에 다니고 있어
+  {% endif %}
+      </p>
+      <p>mbti는 {{ matched_profile.mbti }}이야 </p>
+
+      {% if matched_profiles.sex == 'male' %}
+      <p>
+        {% if matched_profile.army == 'go' %}
+        군대는 다녀왔어!
+      {% elif matched_profile.army == 'nongo' %}
+        군대는 아직 안 갔어
+      {% endif %}
+      </p>{% endif %}
+      <p>키는 {{ matched_profiles.height }}cm고</p>
+      <p>체형은
+        {% if matched_profile.body == 'thin' %}
+        마른편이야
+      {% elif matched_profile.body == 'normal' %}
+      보통인 편이야
+      {% elif matched_profile.body == 'fat' %}
+      통통한 편이야
+      {% elif matched_profile.body == 'muscle' %}
+      탄탄한 편이야
+      {% endif %}
+      </p>
+      <p> 
+        {% if matched_profile.eyes == 'yes' %}
+        유쌍 눈을 가지고 있고
+      {% elif matched_profile.eyes == 'no' %}
+      무쌍 눈을 가지고 있고
+      {% endif %}
+      </p>
+      <p> 
+        {% if matched_profile.face == 'tubu' %}
+        얼굴은 두부상이야
+      {% elif matched_profile.face == 'arab' %}
+      얼굴은 뚜렷상이야
+      {% endif %}
+      </p>
+      <p>{{ matched_profile.hobby }}에 관심이 있어!</p>
       </div>
       <div id="Info2">
-        <p>자유로운 자기소개: {{ matched_profiles.introduction }}</p>
+        <p>자유로운 자기소개: {{ matched_profiles.free }}</p>
       </div>
     </body>
   </main>

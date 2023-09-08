@@ -10,7 +10,7 @@
       true) 
         document
           .getElementById("inner1")
-          .innerHTML = "<b>♥매칭이<span id=one> 성사</span> 되었습니다♥</b>";
+          .innerHTML = "<b>♥새로운<span id=one> 인연</span>을 만나봐요♥</b>";
       else if (/* result=fail */
       true) 
         document
@@ -37,7 +37,7 @@
     }
 
     function meetCheck(check) {
-      if (false/*check==매칭 됐으면*/) {
+      if (true/*check==매칭 됐으면*/) {
         document
           .getElementById("box5")
           .style
@@ -94,7 +94,7 @@
         <div id="box5">
           <!-- 버튼이 box7과 반대로 눌려서 함수 둘이 바꿈 -->
           <p>
-            <strong>만나볼래요!</strong>
+            <strong><span style="color:rgb(241, 48, 128);">만나볼래요!</strong>
           </p>
           <!-- 카톡 아이디 알려주는 창으로 -->
         </div>
@@ -105,7 +105,7 @@
         </div>
         <div id="box7" onclick="go();">
           <p>
-            <p>매칭 재진행은 자동으로 이루어집니다</p>
+            <p>매칭 재진행은 <br>자동으로 이루어집니다</p>
           </p>
         </div>
         <div id="box8" onclick="meetCheck("매칭 안됐으면")"> <!--이게 box6 함수-->
