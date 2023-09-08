@@ -412,7 +412,7 @@ def result(request):#추후 보강 해야함(09.07)
     access_token = request.session.get("access_token",None)
     if access_token == None: #로그인 안돼있으면
         return render(request,"myapp/kakaologin.html") #로그인 시키기
-    return render(request,"myapp/result.html",context)
+    return render(request,"myapp/result.html")
     
 @csrf_exempt
 def menu(request):
