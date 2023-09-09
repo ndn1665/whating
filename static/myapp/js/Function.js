@@ -33,6 +33,19 @@ function validateForm(count) {
             return false;
         }
     } else if (count === 3) {
+        const armyInputs = document.querySelectorAll("[name='army']");
+        let selectedArmy = false;
+        armyInputs.forEach(input => {
+            if (input.checked) {
+                selectedArmy = true;
+            }
+        });
+        if (!selectedArmy) {
+            alert("군필 여부를 선택해주세요.");
+            return false;
+        }
+    }
+        else if (count === 4) {
         const jobInputs = document.querySelectorAll("[name='job']");
         let selectedJob = false;
         jobInputs.forEach(input => {
@@ -44,7 +57,7 @@ function validateForm(count) {
             alert("직업을 선택해주세요.");
             return false;
         }
-    } else if (count === 4) {
+    } else if (count === 5) {
         const schoolInput = document.querySelector("[name='school']");
         const majorInputs = document.querySelectorAll("[name='major']");
         
@@ -63,7 +76,7 @@ function validateForm(count) {
             alert("전공을 선택해주세요.");
             return false;
         }
-    } else if (count === 5) {
+    } else if (count === 6) {
         const mbtiInput1 = document.querySelectorAll("[name='mbti1']");
         const mbtiInput2 = document.querySelectorAll("[name='mbti2']");
         const mbtiInput3 = document.querySelectorAll("[name='mbti3']");
@@ -102,19 +115,8 @@ function validateForm(count) {
             alert("MBTI를 입력해주세요.");
             return false;
         }
-    } else if (count === 6) {
-        const armyInputs = document.querySelectorAll("[name='army']");
-        let selectedArmy = false;
-        armyInputs.forEach(input => {
-            if (input.checked) {
-                selectedArmy = true;
-            }
-        });
-        if (!selectedArmy) {
-            alert("군필 여부를 선택해주세요.");
-            return false;
-        }
-    } else if (count === 7) {
+    } 
+     else if (count === 7) {
         const heightInput = document.getElementById("input1");
         if (heightInput.value<140) {
             alert("키를 입력해주세요.");
@@ -187,10 +189,10 @@ function validateForm(count) {
 function createStr(count) {
     if(count==1) document.write("나이를 입력해주세요");
     else if(count==2) document.write("성별을 입력해주세요");
-    else if(count==3) document.write("직업을 입력해주세요"); //대학생, 대학원생, 취준생, 직장인
-    else if(count==4) document.write("학교와 학과를 입력해주세요"); //학교 인증 시스템 넣기
-    else if(count==5) document.write("mbti를 입력해주세요");
-    else if(count==6) document.write("군/미필 여부를 입력해주세요");
+    else if(count==3) document.write("군/미필 여부를 입력해주세요");
+    else if(count==4) document.write("직업을 입력해주세요"); //대학생, 대학원생, 취준생, 직장인
+    else if(count==5) document.write("학교와 학과를 입력해주세요"); //학교 인증 시스템 넣기
+    else if(count==6) document.write("mbti를 입력해주세요");
     else if(count==7) document.write("키를 입력해주세요"); //범위로(5단위)
     else if(count==8) document.write("체형을 입력해주세요"); //탭으로(마름, 보통, 통통, 근육)
     else if(count==9) document.write("유/무쌍을 입력해주세요"); //탭으로
@@ -217,12 +219,16 @@ function create(count) {
                 <input type=radio name=sex value=female id=2> <label for=2> 여성 </label>"
     }
     else if(count==3) {
+        elem.innerHTML = "<input type=radio id=1 name=army value=go > <label for=1> 군필 </label> \
+                <input type=radio id=2 name=army value=nongo> <label for=2> 미필 </label>"
+    }
+    else if(count==4) {
         elem.innerHTML = "<input type=radio name=job id=1 value=univstu> <label for = 1> 대학생 </label> \
                  <input type=radio name=job id=2 value=gradustu> <label for = 2> 대학원생 </label> \
                  <input type=radio name=job id=3 value=human > <label for = 3> 취준생 </label> \
                  <input type=radio name=job id=4 value=worker > <label for = 4> 직장인 </label> "
     }
-    else if(count==4) {
+    else if(count==5) {
         elem.innerHTML = "<input type=text name=school placeholder=OO대학교 size=10 required></input>\
         <br><br>\
         <input type=radio id=1 name=major value=liberal > <label for = 1> 문과대 </label>\
@@ -235,7 +241,7 @@ function create(count) {
         <input type=radio id=8 name=major value=medicine> <label for = 8> 의/약대 </label>\
         <input type=radio id=9 name=major value=special> <label for = 9> 특수대 </label> "
     }
-    else if(count==5) {
+    else if(count==6) {
         elem.innerHTML = "<input type=radio id=1 name=mbti1 value=E> <label for=1> E </label> \
         <input type=radio id=5 name=mbti1 value=I> <label for=5> I </label>\
         <input type=radio id=2 name=mbti2 value=S> <label for=2> S </label> \
@@ -244,10 +250,6 @@ function create(count) {
         <input type=radio id=7 name=mbti3 value=T> <label for=7> T </label>\
         <input type=radio id=4 name=mbti4 value=J> <label for=4> J </label>\
         <input type=radio id=8 name=mbti4 value=P> <label for=8> P </label> "
-    }
-    else if(count==6) {
-        elem.innerHTML = "<input type=radio id=1 name=army value=go > <label for=1> 군필 </label> \
-                <input type=radio id=2 name=army value=nongo> <label for=2> 미필 </label>"
     }
     else if(count==7) {
         elem.innerHTML = "<input type=range min=139 max=200 name=height value=139 id=input1 size=10 required oninput=document.getElementById('output1').innerHTML=this.value;></input> \

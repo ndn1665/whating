@@ -1,4 +1,4 @@
-#box {
+#box1 {
     font-size: small;
     background-color: white;
                     border-color: rgb(248, 178, 188);
@@ -6,9 +6,39 @@
                     box-shadow: 0 5px 5px rgba(243, 221, 110, 0.2);
                     border-radius: 5%;
                     text-align: center;
-                    opacity: 0.7;
                     text-align: left;
 }
+#box2 {
+    font-size: small;
+    background-color: white;
+                    border-color: rgb(248, 178, 188);
+                    border-style:groove;
+                    box-shadow: 0 5px 5px rgba(243, 221, 110, 0.2);
+                    border-radius: 5%;
+                    text-align: center;
+                    text-align: left;
+}
+#box3 {
+    font-size: small;
+    background-color: white;
+                    border-color: rgb(248, 178, 188);
+                    border-style:groove;
+                    box-shadow: 0 5px 5px rgba(243, 221, 110, 0.2);
+                    border-radius: 5%;
+                    text-align: center;
+                    text-align: left;
+}
+#box4 {
+    font-size: small;
+    background-color: white;
+                    border-color: rgb(248, 178, 188);
+                    border-style:groove;
+                    box-shadow: 0 5px 5px rgba(243, 221, 110, 0.2);
+                    border-radius: 5%;
+                    text-align: center;
+                    text-align: left;
+}
+
 
 p {
     text-align: center;

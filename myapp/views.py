@@ -306,20 +306,20 @@ def my(request,id):
                 #request.session['army'] = 'female' 이런식으로 여자면 army값을 넣어줘야함 안그러면 아래에서 NULL입력돼서 매칭 안됨
                 index +=1
         elif index == 3:
-            request.session['job'] = request.POST.get("job")
+            request.session['army'] = request.POST.get("army")
         elif index == 4:
+            request.session['job'] = request.POST.get("job")
+        elif index == 5:
             request.session['school'] = request.POST.get("school")
             request.session['major'] = request.POST.get("major")
-        elif index == 5:
+        elif index == 6:
             selected_mbti = []
             for i in range(1, 5):
                 mbti_value = request.POST.get(f"mbti{i}")
                 if mbti_value:
                     selected_mbti.append(mbti_value)
-                selected_mbti_str = ''.join(selected_mbti)
-                request.session['mbti'] = selected_mbti_str
-        elif index == 6:
-            request.session['army'] = request.POST.get("army")
+            selected_mbti_str = ''.join(selected_mbti)
+            request.session['mbti'] = selected_mbti_str
         elif index == 7:
             request.session['height'] = request.POST.get("height")
         elif index == 8:
