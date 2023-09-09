@@ -36,11 +36,14 @@
         </div>
         <script>
           function startFun1() {
-            if ({{logged}} == '1') {
-              location.href = '/my/1';
-            }
-            else{
+            if ({{logged}} == '0') {
               location.href = '/kakaologin/';
+            }
+            else if ({{logged}} == '1'){
+              location.href = '/my/1/';
+            }
+            else if ({{logged}} == '2'){
+              location.href = '/meeting/';
             }
           }
 

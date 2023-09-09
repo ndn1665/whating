@@ -16,7 +16,7 @@ def index(request):
    return redirect("/home")
 
 def kakaologin(request):
-    context = {'check':False}
+    #context = {'check':False} 지운다?
     access_token = request.session.get("access_token",None)
     if access_token: #만약 세션에 access_token이 있으면(==로그인 되어 있으면)
         account_info = requests.get("https://kapi.kakao.com/v2/user/me",
@@ -24,17 +24,17 @@ def kakaologin(request):
         kakao_id = account_info.get("id")
         try:
             user_profile = Info.objects.get(kakao_id=kakao_id)  # 카카오톡 ID를 사용하여 사용자 정보 조회
-            print(kakao_id)
-            context['user_profile'] = user_profile
+            #print(kakao_id) 지운다?
+            #context['user_profile'] = user_profile 지운다?
         except Info.DoesNotExist:
             # 새로운 레코드 생성
             user_profile = Info(kakao_id=kakao_id)
             user_profile.save()
-            context['user_profile'] = user_profile
+            #context['user_profile'] = user_profile 지운다?
 
         return redirect("/home")  # 로그인 되어있으면 home페이지로 #로그인 되어있으면 home페이지로
 
-    return render(request,"myapp/kakaologin.html",context)#로그인 안되어있으면 로그인페이지로
+    return render(request,"myapp/kakaologin.html")#로그인 안되어있으면 로그인페이지로
 
 def kakaoLoginLogic(request):
     _restApiKey = '60010e5242c371826d538b43def648c3' # 입력필요
@@ -57,7 +57,7 @@ def kakaoLoginLogicRedirect(request):
 def kakaoLogout(request):
     access_token = request.session.get("access_token",None)
     if access_token == None: #로그인 안돼있으면
-        return redirect("/home") #걍 home으로 보내기
+        return redirect("/kakaologin") #무지성 로그아웃 누른애는 로그인하도록 로그인창으로 보내기
 
     else:
         del request.session['access_token']
@@ -90,7 +90,6 @@ def meeting(request):
     
     account_info = requests.get("https://kapi.kakao.com/v2/user/me",
                                 headers={"Authorization": f"Bearer {access_token}"}).json()
-
 
     if request.method == "POST": # /home/meeting페이지로 인원 선택한 정보 전달
         peoplenum = ''
@@ -230,7 +229,6 @@ def mbti(request):
 @csrf_exempt
 def myinfo(request):
     access_token = request.session.get("access_token",None)
-    print(access_token)
     if access_token == None: #로그인 안돼있으면
         return render(request,"myapp/kakaologin.html") #로그인 시키기
     
@@ -286,8 +284,9 @@ def my(request,id):
 
         if not is_valid_transition(current_page, id):
             # 올바른 페이지 이동이 아니면 거부
-            if id == '2' and request.session['sex'] == 'female': #여자면 4로 이동되도록 함. 3이 army여야함
-                return True 
+            if current_page == 2 and int(id) == 4 and request.session['sex'] == 'female': #여자면 4로 이동되도록 함. 3이 army여야함
+                request.session['current_page'] = int(id) - 1
+                return redirect("/my/4")
             return HttpResponseForbidden("Forbidden")
 
         # 페이지 이동을 허용하고, 세션 업데이트
@@ -304,6 +303,7 @@ def my(request,id):
         elif index == 2:
             request.session['sex'] = request.POST.get("sex")
             if request.session['sex'] == 'female':
+                #request.session['army'] = 'female' 이런식으로 여자면 army값을 넣어줘야함 안그러면 아래에서 NULL입력돼서 매칭 안됨
                 index +=1
         elif index == 3:
             request.session['job'] = request.POST.get("job")
@@ -394,9 +394,7 @@ def choose(request):
       
 @csrf_exempt
 def matching(request):
-    article = 'matching'
-    context = {"article":article}
-    return render(request, "myapp/matching.html", context)
+    return render(request, "myapp/matching.html")
     
 @csrf_exempt
 def matching2(request):
@@ -425,7 +423,6 @@ def result(request):  # 추후 보강 해야함(09.07)
                                 headers={"Authorization": f"Bearer {access_token}"}).json()
     if request.method == 'GET':
         kakao_id = account_info.get("id")
-        print("kakao_id : ", kakao_id)
 
         # 예를 들어 사용자의 정보가 다음과 같다면:
         user_info = Info.objects.get(kakao_id=kakao_id)
@@ -445,7 +442,6 @@ def kakaoid(request):
 
     if request.method == "POST":
         kakao_id = account_info.get("id")
-        print("kakao_id:", kakao_id)
 
         # kakao_id를 사용하여 해당 사용자의 레코드 가져오기
         user_info = Info.objects.filter(kakao_id=kakao_id).first()
