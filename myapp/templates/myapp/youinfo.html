@@ -89,6 +89,20 @@
       <div id="Info2">
         <p>자유로운 자기소개: {{ matched_profiles.free }}</p>
       </div>
+      <br>
+      <div id="box5" onclick="go();">
+        <!-- 버튼이 box7과 반대로 눌려서 함수 둘이 바꿈 -->
+        <p>
+          <strong><span style="color:rgb(241, 48, 128);">만나볼래요!</strong>
+        </p>
+        <!-- 카톡 아이디 알려주는 창으로 -->
+      </div>
+      <script>
+        function go() {
+          /* 백에 매칭 동의 누른 거 전달되게 하고 시간안에 비동의 안 하면 자동 동의 되게 */
+          location.href = '/success/';
+        }
+      </script>
     </body>
   </main>
 </html>
