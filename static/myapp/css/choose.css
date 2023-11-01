@@ -7,20 +7,20 @@ h2 {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    grid-column-gap: 30px;
+    grid-column-gap: 30px;/*컬럼들 사이의 갭 설정*/
     grid-row-gap: 30px;
 }
-.box1 {
-    grid-column: 3/7;
-    grid-row: 1/5;
+.box1 {/*클래스는 점을 맨앞에 씀*/
+    grid-column: 3/7;/*그리드 가로열의 위치 지정(8칸 나눈것중 3~7을 쓴다는것)*/
+    grid-row: 1/5;/*동일*/
     display: inline-block;
     background-color: white;
-    border-style:dashed;
+    border-style:dashed;/*테두리 스타일을 점선으로*/
     border-color: rgb(248, 178, 188);
-    border-radius: 30%;
+    border-radius: 30%;/*테두리의 둥근 비율(얼마나 둥글지)을 30퍼로*/
     text-align: center;
     font-size: larger;
-    cursor : pointer;
+    cursor : pointer;/*버튼에 마우스를 갖다 댔을때 포인터처럼 보이게 */
     line-height: 90px;
 }
 .box2 {

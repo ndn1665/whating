@@ -16,40 +16,36 @@ def index(request):
    return redirect("/home")
 
 def kakaologin(request):
-    #context = {'check':False} 지운다?
     access_token = request.session.get("access_token",None)
     if access_token: #만약 세션에 access_token이 있으면(==로그인 되어 있으면)
         account_info = requests.get("https://kapi.kakao.com/v2/user/me",
-                                    headers={"Authorization": f"Bearer {access_token}"}).json()
-        kakao_id = account_info.get("id")
+                                    headers={"Authorization": f"Bearer {access_token}"}).json() #사용자 정보를 json 형태로 받아옴
+        kakao_id = account_info.get("id")#3991591359138 이런거
         try:
             user_profile = Info.objects.get(kakao_id=kakao_id)  # 카카오톡 ID를 사용하여 사용자 정보 조회
-            #print(kakao_id) 지운다?
-            #context['user_profile'] = user_profile 지운다?
         except Info.DoesNotExist:
             # 새로운 레코드 생성
             user_profile = Info(kakao_id=kakao_id)
             user_profile.save()
-            #context['user_profile'] = user_profile 지운다?
 
-        return redirect("/home")  # 로그인 되어있으면 home페이지로 #로그인 되어있으면 home페이지로
+        return redirect("/home")  # 로그인 되어있으면 home페이지로
 
     return render(request,"myapp/kakaologin.html")#로그인 안되어있으면 로그인페이지로
 
 def kakaoLoginLogic(request):
-    _restApiKey = '60010e5242c371826d538b43def648c3' # 입력필요
+    _restApiKey = '60010e5242c371826d538b43def648c3' 
     _redirectUrl = 'http://127.0.0.1:8000/kakaoLoginLogicRedirect'
     _url = f'https://kauth.kakao.com/oauth/authorize?client_id={_restApiKey}&redirect_uri={_redirectUrl}&response_type=code'
-    return redirect(_url)
+    return redirect(_url)#카카오 서버로 접속하는것 여기로 접속하면 redirect uri로 정보를 쏴줌
 
 def kakaoLoginLogicRedirect(request):
     _qs = request.GET['code']
-    _restApiKey = '60010e5242c371826d538b43def648c3' # 입력필요
+    _restApiKey = '60010e5242c371826d538b43def648c3' 
     _redirect_uri = 'http://127.0.0.1:8000/kakaoLoginLogicRedirect'
     _url = f'https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={_restApiKey}&redirect_uri={_redirect_uri}&code={_qs}'
-    _res = requests.post(_url)
-    _result = _res.json()
-    request.session['access_token'] = _result['access_token']
+    _res = requests.post(_url) # post형식으로 온 정보를
+    _result = _res.json() #json화 한 후
+    request.session['access_token'] = _result['access_token']#access token만 세션에 저장
     request.session.modified = True
     
     return redirect("/home") #로그인 완료 후엔 home페이지로
@@ -67,23 +63,25 @@ def kakaoLogout(request):
 @csrf_exempt
 def home(request):
     logged = 0
-    
+        
     access_token = request.session.get("access_token",None)
     if access_token:
         logged = 1
         account_info = requests.get("https://kapi.kakao.com/v2/user/me",
                                 headers={"Authorization": f"Bearer {access_token}"}).json()
-        kakao_id = account_info.get("id")
-        user_info = Info.objects.filter(kakao_id=kakao_id).first()
-        if user_info.kakaotalk_id :
+        print(account_info)
+        kakao_id = account_info.get("id") #만약 로그인 되어있으면 카카오 아이디 index를 가져옴
+        print(kakao_id)
+        user_info = Info.objects.filter(kakao_id=kakao_id).first() #카카오 아이디 index가 있으면 user_info를 가져옴(db에서)
+        print(user_info)
+        if user_info.kakaotalk_id:
             logged = 2
-    context = {'logged':logged}
+            print(user_info.kakaotalk_id)
+    context = {'logged':logged} # django 템플릿 언어 # html파일 안에 logged라는 django template 언어가 있으면 views의 logged를 넣음
     return render(request, "myapp/home.html",context)
 
 @csrf_exempt
 def meeting(request):
-    #만약 자기소개 정보가 없으면
-    #return redirect('/my/1')
     access_token = request.session.get("access_token",None)
     if access_token == None: #로그인 안돼있으면
         return render(request,"myapp/kakaologin.html") #로그인 시키기
@@ -91,7 +89,7 @@ def meeting(request):
     account_info = requests.get("https://kapi.kakao.com/v2/user/me",
                                 headers={"Authorization": f"Bearer {access_token}"}).json()
 
-    if request.method == "POST": # /home/meeting페이지로 인원 선택한 정보 전달
+    if request.method == "POST": # /home/meeting페이지로 인원 선택한 정보 전달 #만약 페이지 접속을 post방식으로 했다면
         peoplenum = ''
         peoplenum = request.POST.get('submit_peoplenum') #인원 선택 정보 추출
         avgage = request.POST.get('submit_age')
@@ -150,7 +148,6 @@ def meeting2(request):
         
         return redirect("/good/")
 
-    #count += 1  여기 때문에 meeting2.html 에서 오류 -> 주석처리
     return render(request, "myapp/meeting2.html")
 
 @csrf_exempt
@@ -200,9 +197,9 @@ def kakao(request):
 
     account_info = requests.get("https://kapi.kakao.com/v2/user/me",
                                 headers={"Authorization": f"Bearer {access_token}"}).json()
-    if request.method == 'GET':
+    if request.method == 'GET':#GET방식은 페이지를 그냥접속했냐는 것
         kakao_id = account_info.get("id")
-
+ 
         user_info = Info.objects.get(kakao_id=kakao_id)
         user_gender = user_info.sex
         peoplenum = user_info.peoplenum
@@ -232,10 +229,11 @@ def myinfo(request):
     if access_token == None: #로그인 안돼있으면
         return render(request,"myapp/kakaologin.html") #로그인 시키기
     
-    account_info = requests.get("https://kapi.kakao.com/v2/user/me", headers={"Authorization": f"Bearer {access_token}"}).json()
-    kakao_id = account_info.get("id")
+    else:
+        account_info = requests.get("https://kapi.kakao.com/v2/user/me", headers={"Authorization": f"Bearer {access_token}"}).json()
+        kakao_id = account_info.get("id")
     
-    user_profile = get_object_or_404(Info, kakao_id=kakao_id)
+        user_profile = get_object_or_404(Info, kakao_id=kakao_id)
     context = {'user_profile': user_profile,  # 사용자 정보를 context에 추가
     }
     return render(request, "myapp/myinfo.html",context)
@@ -258,7 +256,7 @@ def youinfo(request):
 def is_valid_transition(current_page, requested_page):
     # 요청한 페이지가 현재 페이지에서의 올바른 다음 페이지인지 확인
     requested_page_int = int(requested_page)
-    if requested_page_int == current_page + 1 or current_page == requested_page_int :
+    if requested_page_int == current_page + 1 or current_page == requested_page_int :#1페이지 넘어가는 경우나 새로고침하는 경우
         return True
     return False
 
@@ -274,23 +272,25 @@ def my(request,id):
     kakao_id = account_info.get("id")
 
     if request.method == "GET":
-        if int(id) == 1:
-            if request.session.get('current_page'):
-                del request.session['current_page']
+        if int(id) == 1: #my/1/로접속 하는 경우
+            if request.session.get('current_page'):#my/3이런데에서 넘어오는 경우 current페이지가 3이므로 1로 가려할때 함수 오류
+                del request.session['current_page']#따라서 현재페이지를 지워준다
         
-        current_page = request.session.get('current_page', 0)
-        if int(id) < current_page:
-            current_page = int(id)
+        current_page = request.session.get('current_page', 0)#현재 접속페이지가 예를 들어 my/3인 경우 3을 추출
+                                                            #meeting같은 페이지에서 넘어왔을 경우 현재페이지가 없으므로 0으로 current_page초기화
+                                                            #request_page가 1 일때 오류가 없기 위해 0으로 초기화 하는것
+        if int(id) < current_page: #my/4 에서 3으로 가는 경우 current값이 더 크므로 함수에 오류가 남
+            current_page = int(id)#따라서 새로고침하는것처럼 처리
 
         if not is_valid_transition(current_page, id):
             # 올바른 페이지 이동이 아니면 거부
             if current_page == 2 and int(id) == 4 and request.session['sex'] == 'female': #여자면 4로 이동되도록 함. 3이 army여야함
-                request.session['current_page'] = int(id) - 1
+                request.session['current_page'] = int(id) - 1 #근데 현재페이지는 3처럼 처리
                 return redirect("/my/4")
             return HttpResponseForbidden("Forbidden")
 
         # 페이지 이동을 허용하고, 세션 업데이트
-        request.session['current_page'] = int(id)
+        request.session['current_page'] = int(id) #페이지 이동할때까지 문제가 없었으므로 이동한 페이지id를 현재페이지로 초기화
 
     
     #자기소개 한거 있으면 자기소개 내용 불러오고 choose페이지로 넘어가게
@@ -336,7 +336,7 @@ def my(request,id):
         elif index == 12:
             request.session['free'] = request.POST.get("free")
         else:
-            index = 1
+            index = 1 #무지성 접속했을경우 1로 가게함
 
         index2 = index + 1
         if index2 > 12:  # 모든 정보를 입력한 경우

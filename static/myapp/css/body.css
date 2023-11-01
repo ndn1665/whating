@@ -28,7 +28,7 @@ ul {
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid black;/*아래 테두리만 꾸밈*/
     background-color: aliceblue;
 }
 button {
@@ -41,8 +41,9 @@ button {
     display: grid;
     grid-row: 3;
     grid-column: 2;
-    place-items: center;
-    justify-content: center;
+    place-items: center;/*justify와 align을 합친 것*/
+    justify-content: center;/*display가 flex일때 가로축에 대한 정렬
+    align-items는 세로축에 대한 정렬*/
 }
 #Choose {
     place-items: center;
@@ -70,18 +71,18 @@ label {
     margin: 5px;
     text-align: center;
 }
-input[type="radio"]:checked + label {
+input[type="radio"]:checked + label { /*checked 되었을때 label을 아래 색들로 지정*/
     border-color: rgb(246, 124, 144);
     background-color: rgb(246, 124, 144);
 }
-input[type="radio"] {
+input[type="radio"] {/*이걸 none으로 안하면 바로 위 스타일 설정한 라벨이랑 겹쳐 보임*/
     display: none;
 }
 button {
     background-color: white;
     border-radius: 25%;
     border-color: white;
-    border: none;
+    border: none;/*찐 버튼은 보더설정 없애고 위에 .button의 보더설정을 사용*/
     display: inline-block;
     padding: 10px 10px;
     font-weight: 600;

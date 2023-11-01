@@ -3,14 +3,15 @@
   <link rel="stylesheet" href="{% static 'myapp/css/choose.css' %}">
   {% include 'myapp/index.html' %}
   <main class="Choose">
-
+<!--p태그는 글자태그-->
     <body>
+      <br><br><br><!--줄바꿈 태그-->
+      <h2>원하는 버튼을 <span style="color: rgb(241, 48, 128);">클릭</span>해주세요!</h2><!--span태그는 
+      글자안에 특정 부분만 선택하고 싶을때 쓰는 태그-->
       <br><br><br>
-      <h2>원하는 버튼을 <span style="color: rgb(241, 48, 128);">클릭</span>해주세요!</h2>
-      <br><br><br>
-      <div id="meet">
-        <div class="box1" onclick="AloneFun();">
-          <strong>소개팅하기!</strong>
+      <div id="meet"><!--class는 겹쳐도 되지만 id는 유일 태그(class box로 공통되게 해도 됨)-->
+        <div class="box1" onclick="AloneFun();"><!--onclick은 이 버튼 눌릴때 실행할 함수-->
+          <strong>소개팅하기!</strong><!--강조 태그-->
         </div>
         <div class="box2" onclick="MeetingFun();">
           <strong>미팅하기!</strong>
@@ -18,7 +19,7 @@
 
         <script>
           function AloneFun() {
-            location.href = "/alonechoose/";
+            location.href = "/alonechoose/";//자바스크립트에선 location.href로 해서 링크 이동
           }
 
           function MeetingFun() {

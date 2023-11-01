@@ -22,6 +22,8 @@ function validateForm(count) {
         }
     } else if (count === 2) {
         const sexInputs = document.querySelectorAll("[name='sex']");
+        //같은이름의 요소 찾기 all을 해주면 배열로 반환
+        //
         let selectedSex = false;
         sexInputs.forEach(input => {
             if (input.checked) {

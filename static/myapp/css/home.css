@@ -64,7 +64,7 @@
                     cursor : pointer;
                     line-height: 40px;
                     opacity: 0.5;
-                    pointer-events: none;
+                    pointer-events: none;/*눌러도 버튼 클릭 안되도록*/
                 }
                 .box6 {
                     grid-column: 5/10;

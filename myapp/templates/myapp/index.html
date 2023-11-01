@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">{% load static %}
 
-  <head>
+  <head><!--웹 브라우저가 웹 문서를 해석하는데 필요한 정보를 입력하는 부분-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!--화면 비율이 다른 핸드폰에서 자동으로 비율 조정-->
     <link rel="stylesheet" href="{% static 'myapp/css/index.css' %}">
-    <title>
+    <title><!--제목 태그, 웹문서의 제목-->
       당신의 인연은 어디에? 왓팅
     </title>
-
   </head>
-  <header>
-    <nav id="navButton">
+
+  <header><!--화면 위쪽 차지하는 부분-->
+    <nav id="navButton"><!-- 다른 위치나 웹 문서로 연결하는 링크를 만듦, a태그를 가두는 태그-->
       <li id="navButton1">
         <a href="/home">
           홈

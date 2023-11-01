@@ -3,39 +3,40 @@
             body {
                 font-family: 'Gowun Dodum', sans-serif;
             }
-             @media screen and (min-width: 320px) and (max-width: 1439px) {
+             @media screen and (min-width: 320px) and (max-width: 1439px) {/*뷰포트(미디어쿼리)에서 화면 최소비율,최대비율 정하기
+                (비율을 320~하는이유는 그 이하를 사용하는 사람 비율이 적어서 낭비하지 않기 위함)*/
         
                 header {
-                    top:0; left:0; right:0;
-                    width:100%;
-                    position: fixed;
+                    top:0; left:0; right:0;/*위,왼쪽,오른쪽의 margin이 0이 되도록(남는공간이없이 딱 붙는것)*/
+                    width:100%;/*퍼센트로해서 채우기(뷰포트를 사용하기위함)*/
+                    position: fixed;/*화면을 스크롤해도 헤더부분은 위치 고정*/
                 }
-                #navButton {
-                    display: grid;
-                    grid-template-columns: repeat(4, 4fr);
+                #navButton {/*index.html에서 id에 대한 css적용에는 #을 넣어야함(태그자체에는 필요없음)*/
+                    display: grid;/*화면배치종류 <->flex(무조건 가로배열)*/
+                    grid-template-columns: repeat(4, 4fr);/*가로는 4칸으로 나누고, (fr)각칸을 화면비율의 4분의1로하겠다는 뜻*/
                     grid-template-rows: 30px;
                 }
                 nav { 
                     display: flex;
-                    list-style-type: none;
-                    text-align: center;
+                    list-style-type: none;/*li태그 맨앞 . 점을 없앰*/
+                    text-align: center;/*글자 가운데 정렬*/
                     background-color:rgb(248, 200, 207);
                     top:0; left:0; right:0;
                 }
                 li {
-                    display: inline-block;
-                    border-color: lightblue;
+                    display: inline-block;/*inline처럼 줄바꿈 없이 한 줄 배치 + block처럼 상하좌우 마진 설정 가능*/
+                    border-color: lightblue;/*테두리 색 설정*/
                     text-align: center;
                     padding: 0;
-                    margin: 0;
-                    line-height: 30px;
+                    margin: 0;/*margin -> border -> padding순으로 내용물을 감쌈*/
+                    line-height: 30px;/*수직정렬,  내용물을 세로의 중간에 넣으려고 쓴 코드*/
                 }
                 body {
                     background-color:rgb(255, 249, 249);
                 }
                 a {
                     color: white;
-                    text-decoration: none;
+                    text-decoration: none;/*a태그의 링크 밑 선을 없애는 코드*/
                 }
                 h2 {
                     grid-template-columns: 1fr;
