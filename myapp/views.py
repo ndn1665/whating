@@ -8,7 +8,7 @@ import requests
 from django.template import loader
 from django.http import HttpResponse, JsonResponse, HttpResponseForbidden
 from django.db.models import Q
-
+from django.views.generic import TemplateView
 # Create your views here.
   
 @csrf_exempt
@@ -382,6 +382,16 @@ def my(request,id):
     return render(request, "myapp/my.html", context)
     
 
+class AboutView(TemplateView):
+    template_name = "you.html"
+    template_name = "choose.html"
+    template_name = "matching.html"
+    template_name = "matching2.html"
+    template_name = "matching3.html"
+    template_name = "error.html"
+    template_name = "use.html"
+
+'''
 @csrf_exempt
 def you(request):
 
@@ -413,6 +423,10 @@ def error(request):
 def use(request):
 
     return render(request, "myapp/use.html")
+
+
+    
+'''
 
 def result(request):  # 추후 보강 해야함(09.07)
     access_token = request.session.get("access_token", None)
