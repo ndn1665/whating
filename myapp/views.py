@@ -383,7 +383,6 @@ def my(request,id):
     
 
 class AboutView(TemplateView):
-    template_name = "you.html"
     template_name = "choose.html"
     template_name = "matching.html"
     template_name = "matching2.html"
