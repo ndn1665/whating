@@ -9,7 +9,7 @@ from django.template import loader
 from django.http import HttpResponse, JsonResponse, HttpResponseForbidden
 from django.db.models import Q
 from django.views.generic import TemplateView
-# Create your views here.
+
   
 @csrf_exempt
 def index(request):
@@ -150,45 +150,6 @@ def meeting2(request):
 
     return render(request, "myapp/meeting2.html")
 
-@csrf_exempt
-def good(request):
-
-    return render(request, "myapp/good.html")
-
-@csrf_exempt
-def go(request):
-
-    return render(request, "myapp/go.html")
-
-
-@csrf_exempt
-def alonechoose(request):
-
-    return render(request, "myapp/alonechoose.html")
-@csrf_exempt
-def alonechoose2(request):
-
-    return render(request, "myapp/alonechoose2.html")
-@csrf_exempt
-def army(request):
-
-    return render(request, "myapp/army.html")
-@csrf_exempt
-def body(request):
-
-    return render(request, "myapp/body.html")
-@csrf_exempt
-def eyes(request):
-
-    return render(request, "myapp/eyes.html")
-@csrf_exempt
-def height(request):
-
-    return render(request, "myapp/height.html")
-@csrf_exempt
-def hobby(request):
-
-    return render(request, "myapp/hobby.html")
 
 def kakao(request):
     access_token = request.session.get("access_token", None)
@@ -214,14 +175,6 @@ def kakao(request):
 
     return render(request, "myapp/kakao.html")
 
-@csrf_exempt
-def major(request):
-
-    return render(request, "myapp/major.html")
-@csrf_exempt
-def mbti(request):
-
-    return render(request, "myapp/mbti.html")
 
 @csrf_exempt
 def myinfo(request):
@@ -237,20 +190,7 @@ def myinfo(request):
     context = {'user_profile': user_profile,  # 사용자 정보를 context에 추가
     }
     return render(request, "myapp/myinfo.html",context)
-@csrf_exempt
-def success(request):
 
-    return render(request, "myapp/success.html")
-
-@csrf_exempt
-def fail(request):
-
-    return render(request, "myapp/fail.html")
-
-@csrf_exempt
-def youinfo(request):
-
-    return render(request, "myapp/youinfo.html")
 
 
 def is_valid_transition(current_page, requested_page):
@@ -383,49 +323,28 @@ def my(request,id):
     
 
 class AboutView(TemplateView):
-    template_name = "choose.html"
-    template_name = "matching.html"
-    template_name = "matching2.html"
-    template_name = "matching3.html"
-    template_name = "error.html"
-    template_name = "use.html"
-
-'''
-@csrf_exempt
-def you(request):
-
-    return render(request, "myapp/you.html")
-
-@csrf_exempt
-def choose(request):
-    #홍대축제에서 만나기 누르면 choose에서는 무조건 meeting으로 redirect
-    return render(request, "myapp/choose.html")
-      
-@csrf_exempt
-def matching(request):
-    return render(request, "myapp/matching.html")
-    
-@csrf_exempt
-def matching2(request):
-
-    return render(request, "myapp/matching2.html")
-@csrf_exempt
-def matching3(request):
-
-    return render(request, "myapp/matching3.html")
-@csrf_exempt
-def error(request):
-
-    return render(request, "myapp/error.html")
-
-@csrf_exempt
-def use(request):
-
-    return render(request, "myapp/use.html")
-
-
-    
-'''
+    template_name = ["myapp/use.html",
+                     "myapp/choose.html",
+                     "myapp/matching.html",
+                     "myapp/matching2.html",
+                     "myapp/matching3.html",
+                     "myapp/error.html",
+                     "myapp.fail.html",
+                     "myapp/good.html",
+                     "myapp/go.html",
+                     "myapp/alonechoose.html",
+                     "myapp/alonechoose2.html",
+                     "myapp/army.html",
+                     "myapp/body.html",
+                     "myapp/eyes.html",
+                     "myapp/height.html",
+                     "myapp/hobby.html",
+                     "myapp/menu.html",
+                     "myapp/youinfo.html",
+                     "myapp/success.html",
+                     "myapp/major.html",
+                     "myapp/mbti.html"
+                     ]
 
 def result(request):  # 추후 보강 해야함(09.07)
     access_token = request.session.get("access_token", None)
@@ -440,10 +359,7 @@ def result(request):  # 추후 보강 해야함(09.07)
         # 예를 들어 사용자의 정보가 다음과 같다면:
         user_info = Info.objects.get(kakao_id=kakao_id)
     return render(request, "myapp/result.html", {'user_info': user_info})
-@csrf_exempt
-def menu(request):
 
-    return render(request,"myapp/menu.html")
 
 @csrf_exempt
 def kakaoid(request):
