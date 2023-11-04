@@ -26,7 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--c+to4tt+*kq)&c)qp0h&+d(i+)6_ip_w@qd6m*bcmh7wb_&t8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#static폴더의 내용이 배포될땐 collect static되기 때문에 Debug = False 상태여야 정확한 static의 적용상태를 볼 수 있다. 따라서 테스트
+#단계에서는 static을 정확히 보려면 밑의 static을 수정해야한다.
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "*"
